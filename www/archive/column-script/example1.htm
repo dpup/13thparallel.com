@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Component - Column Script</title>
+
+<link rel="stylesheet" type="text/css" href="example1.css" />
+
+<script type="text/javascript" src="lib_columns.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+// <![CDATA[
+	
+	function exampleOne()
+	{
+		if (document.getElementById && typeof document.getElementById("content").innerHTML != "undefined")
+		{
+			var exampleColumns = Columns.splitText(document.getElementById("content").innerHTML, 200, 200);
+			
+			for (var i = 0; i < exampleColumns.length; i ++)
+			{
+				alert("Array element number " + i + ":\n\n" + exampleColumns[i]);
+			}
+		}
+		else alert("I'm sorry, your browser does not support enough scripting features to run this example.");
+	}
+
+// ]]>
+</script>
+
+<noscript>
+<p>Hi there, if this text is displayed, your browser most likely does not support any JavaScript, which is necessary 
+for viewing this example. Sorry for the inconvenience.</p>
+</noscript>
+
+<p><a href="#" onclick="exampleOne(); return false;">Run example One</a><br />
+<a href="example1.css">Get Stylesheet</a>
+</p>
+
+<div id="divSizer"></div>
+
+<div id="content">
+<h1>7.1 Introduction to media types</h1>
+
+<p>One of the most important features of style sheets is that they
+specify how a document is to be presented on different media: on the
+screen, on paper, with a speech synthesizer, with a braille device,
+etc.</p>
+
+<p>Certain CSS properties are only designed for certain media (e.g.,
+the 'cue-before' property for aural user agents).
+On occasion, however, style sheets for different
+media types may share a property, but require different values for
+that property. For example, the 'font-size' property is useful both
+for screen and print media. However, the two media are different
+enough to require different values for the common property; a document
+will typically need a larger font on a computer screen than on paper.
+Experience also shows that sans-serif fonts are easier to read on
+screen, while fonts with serifs are easier to read on paper.  For
+these reasons, it is necessary to express that a style sheet -- or a
+section of a style sheet -- applies to certain media types.</p>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Viewport example 2</title>
+
+<style type="text/css">
+body {
+	margin:					15px;
+	padding:				0;
+	background:				#fff;
+}
+
+* {
+	font:					11px/13px verdana, arial, sans-serif;
+	color:					#000;
+}
+
+p {
+	margin:					0 0 1.3em 0;
+}
+
+table {
+	margin:					0 auto;
+}
+
+iframe {
+	margin:					0 0 1.3em 0;
+	border-width:			1px;
+	border-color:			#999;
+}
+</style>
+
+</head>
+<body>
+
+<table cellpadding="5" cellspacing="0" border="0" width="700">
+<tr>
+	<td colspan="2">
+	<p>These are two iframes with width 350 and height 300. 
+	The html element background color is <span style="background: #AFB8BC">#AFB8BC</span>, 
+	the body has <span style="background: #DDE2E4">#DDE2E4</span>. 
+	</p>
+	</td>
+</tr>
+<tr>
+	<td><p>backwards compatible mode</p></td>
+	<td><p>strict mode</p></td>
+</tr>
+<tr>
+	<td><iframe id="iframeOne" name="iframeOne" src="example2_compatible.htm" width="350" height="300"></iframe></td>
+	<td><iframe id="iframeTwo" name="iframeTwo" src="example2_strict.htm" width="350" height="300"></iframe></td>
+</tr>
+<tr>
+	<td colspan="2">
+	<p>When Internet Explorer is in compatibility mode, the body element is used as 
+	the canvas. This means the body will be just as big as the viewport, and get 
+	scrollbars when there is a lot of content. When the browser renders in a strict way, 
+	the html element is used as the canvas, and the size of the body element is determined 
+	only by the inline content that it has. The clientWidth/Height properties will give 
+	you the size of an element without its border, margin or scrollbar. This is 
+	what we are looking for when we want to find the available space in the viewport.
+	</p>
+	
+	<p>What seems like a bug, but could be useful, is that in Mozilla 1.0 the body is 
+	not used as the canvas, but its clientWidth/Height properties give the 
+	viewport width and height (without scrollbars) anyway.
+	</p>
+	</td>
+</tr>
+</table>
+
+</body>
+</html>

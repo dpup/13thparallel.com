@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Viewport example 6</title>
+
+<style type="text/css">
+body {
+	margin:					15px;
+	padding:				0;
+	background:				#fff;
+}
+* {
+	font:					11px/13px verdana, arial, sans-serif;
+	color:					#000;
+}
+p {
+	margin:					0 0 1.3em 0;
+}
+table {
+	margin:					0 auto;
+}
+iframe {
+	margin:					0 0 1.3em 0;
+	border-width:			1px;
+	border-color:			#999;
+}
+input {
+	border:					1px solid #ccc;
+}
+</style>
+
+<script type="text/javascript">
+// <![CDATA[
+var frame1;
+var frame2;
+// ]]>
+</script>
+
+</head>
+<body>
+
+<table cellpadding="5" cellspacing="0" border="0" width="600">
+<tr>
+	<td colspan="4">
+	<p>These are two iframes with width 300 and height 100. You can play with them to see 
+	how the scrolling properties are measured.</p>
+	</td>
+</tr>
+<tr>
+	<td colspan="2"><p>backwards compatible mode</p></td>
+	<td colspan="2"><p>strict mode</p></td>
+</tr>
+<tr>
+	<td colspan="2"><iframe id="iframeOne" name="iframeOne" src="2002.06.viewport.example6_compatible.htm" width="300" height="100"></iframe></td>
+	<td colspan="2"><iframe id="iframeTwo" name="iframeTwo" src="2002.06.viewport.example6_strict.htm" width="300" height="100"></iframe></td>
+</tr>
+<tr>
+	<td>document.documentElement.scrollLeft</td>
+	<td><input size="9" id="inputScrollLeft1One" /></td>
+	<td>document.documentElement.scrollLeft</td>
+	<td><input size="9" id="inputScrollLeft1Two" /></td>
+</tr>
+<tr>
+	<td>document.documentElement.scrollTop</td>
+	<td><input size="9" id="inputScrollTop1One" /></td>
+	<td>document.documentElement.scrollTop</td>
+	<td><input size="9" id="inputScrollTop1Two" /></td>
+</tr>
+<tr>
+	<td>document.body.scrollLeft</td>
+	<td><input size="9" id="inputScrollLeft2One" /></td>
+	<td>document.body.scrollLeft</td>
+	<td><input size="9" id="inputScrollLeft2Two" /></td>
+</tr>
+<tr>
+	<td>document.body.scrollTop</td>
+	<td><input size="9" id="inputScrollTop2One" /></td>
+	<td>document.body.scrollTop</td>
+	<td><input size="9" id="inputScrollTop2Two" /></td>
+</tr>
+<tr>
+	<td>window.pageXOffset</td>
+	<td><input size="9" id="inputPageXOffsetOne" /></td>
+	<td>window.pageXOffset</td>
+	<td><input size="9" id="inputPageXOffsetTwo" /></td>
+</tr>
+<tr>
+	<td>window.pageYOffset</td>
+	<td><input size="9" id="inputPageYOffsetOne" /></td>
+	<td>window.pageYOffset</td>
+	<td><input size="9" id="inputPageYOffsetTwo" /></td>
+</tr>
+<tr>
+	<td>window.scrollX</td>
+	<td><input size="9" id="inputScrollXOne" /></td>
+	<td>window.scrollX</td>
+	<td><input size="9" id="inputScrollXTwo" /></td>
+</tr>
+<tr>
+	<td>window.scrollY</td>
+	<td><input size="9" id="inputScrollYOne" /></td>
+	<td>window.scrollY</td>
+	<td><input size="9" id="inputScrollYTwo" /></td>
+</tr>
+</table>
+
+<script type="text/javascript">
+// <![CDATA[
+
+function checkIFrames() {
+	var value;
+	
+	if( frame1 && frame2 ) {
+		// iframe 1
+		if( frame1.document && frame1.document.documentElement ) value = frame1.document.documentElement.scrollLeft;
+		else value = undefined;
+		document.getElementById( "inputScrollLeft1One" ).value = value;
+	
+		if( frame1.document && frame1.document.documentElement ) value = frame1.document.documentElement.scrollTop;
+		else value = undefined;
+		document.getElementById( "inputScrollTop1One" ).value = value;
+	
+		if( frame1.document && frame1.document.body ) value = frame1.document.body.scrollLeft;
+		else value = undefined;
+		document.getElementById( "inputScrollLeft2One" ).value = value;
+	
+		if( frame1.document && frame1.document.body ) value = frame1.document.body.scrollTop;
+		else value = undefined;
+		document.getElementById( "inputScrollTop2One" ).value = value;
+	
+
+		value = frame1.pageXOffset;
+		document.getElementById( "inputPageXOffsetOne" ).value = value;
+		
+		value = frame1.pageYOffset;
+		document.getElementById( "inputPageYOffsetOne" ).value = value;
+		
+		value = frame1.scrollX;
+		document.getElementById( "inputScrollXOne" ).value = value;
+		
+		value = frame1.scrollY;
+		document.getElementById( "inputScrollYOne" ).value = value;
+		
+		
+		// iframe 2
+		if( frame2.document && frame2.document.documentElement ) value = frame2.document.documentElement.scrollLeft;
+		else value = undefined;
+		document.getElementById( "inputScrollLeft1Two" ).value = value;
+	
+		if( frame2.document && frame2.document.documentElement ) value = frame2.document.documentElement.scrollTop;
+		else value = undefined;
+		document.getElementById( "inputScrollTop1Two" ).value = value;
+	
+		if( frame2.document && frame2.document.body ) value = frame2.document.body.scrollLeft;
+		else value = undefined;
+		document.getElementById( "inputScrollLeft2Two" ).value = value;
+	
+		if( frame2.document && frame2.document.body ) value = frame2.document.body.scrollTop;
+		else value = undefined;
+		document.getElementById( "inputScrollTop2Two" ).value = value;
+
+		value = frame2.pageXOffset;
+		document.getElementById( "inputPageXOffsetTwo" ).value = value;
+		
+		value = frame2.pageYOffset;
+		document.getElementById( "inputPageYOffsetTwo" ).value = value;
+
+		value = frame2.scrollX;
+		document.getElementById( "inputScrollXTwo" ).value = value;
+		
+		value = frame2.scrollY;
+		document.getElementById( "inputScrollYTwo" ).value = value;		
+	}
+	
+	setTimeout( "checkIFrames()", 50 );
+}
+
+window.onload = checkIFrames;
+// ]]>
+</script>
+
+</body>
+</html>

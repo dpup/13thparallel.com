@@ -1,0 +1,6 @@
+  <div class="feedTitle">
+    <a href="<?13r2a feedLink ?>"><?13r2a feedTitle ?></a>
+  </div>
+  <div class="feedItems">
+    <?13r2a theFeed ?>
+  </div>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE rss PUBLIC "-//Netscape Communications//DTD RSS 0.91//EN"
+            "http://my.netscape.com/publish/formats/rss-0.91.dtd">
+
+<rss version="0.91">
+  <channel>
+    <title>My RSS Feed</title>
+    <link>http://my-uri.com</link>
+    <description>A Sample RSS Feed</description>
+    <language>en-uk</language>
+    <copyright>Copyright (c)2002 Mr. Blogs</copyright>
+    <pubDate>2002-06-03</pubDate>
+    <lastBuildDate>2002-06-03</lastBuildDate>
+    <managingEditor>Mr. Blogs</managingEditor>
+    <webMaster>Mr. Blogs' Friend</webMaster>
+
+    <image>
+      <title>A nice icon for the feed</title>
+      <url>http://my-uri.com/icon.gif</url>
+      <link>http://my-uri.com</link>
+      <description>Description</description>
+    </image>
+
+    <item>
+      <title>Item 1</title>
+      <description>1st article on my site</description>
+      <link>http://my-uri.com/article1.htm</link>
+    </item>
+
+    <item>
+      <title>Item 2</title>
+      <description>2nd article on my site</description>
+      <link>http://my-uri.com/article2.htm</link>
+    </item>
+
+    <item>
+      <title>Item 3</title>
+      <description>3rd article on my site</description>
+      <link>http://my-uri.com/article3.htm</link>
+    </item>
+
+  </channel>
+</rss>

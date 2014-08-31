@@ -1,0 +1,14 @@
+<!--#
+	TEMPLATE FOR DISPLAYING THE INDIVIDUAL LINKS
+	expects the variables:
+
+		id				link's DB id
+		url				url of the link	(minus http://, use /actions/go/ do log hits to that url)
+		title			link's title
+		description		link's description
+		created			when link was created
+		hits			number of times link has been followed
+		
+		in the form <#var#>
+#-->
+<p class="link"><a href="/links/actions/go/<#url#>" title="<#description#>"><#title#></a></p>

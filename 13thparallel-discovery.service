@@ -1,0 +1,25 @@
+[Unit]
+Description=13thparallel.com announce
+BindsTo=13tparallel.service
+After=13tparallel.service
+
+[Service]
+User=core
+EnvironmentFile=/etc/environment
+RemainAfterExit=yes
+
+ExecStart=/bin/sh -c "while true; \
+  do \
+  /bin/etcdctl set --ttl 60 /vulcand/upstreams/13tparallel/endpoints/13tparallel.service http://$COREOS_PRIVATE_IPV4:5008; \
+  /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.com/locations/home/path '/.*'; \
+  /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.com/locations/home/upstream 13tparallel; \
+  /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.net/locations/home/path '/.*'; \
+  /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.net/locations/home/upstream 13tparallel; \
+  echo 13thparallel.com running at http://$COREOS_PRIVATE_IPV4:5008 and registered with etcd; \
+  sleep 45; done;"
+
+[X-Fleet]
+X-ConditionMachineOf=13thparallel.service
+
+[Install]
+WantedBy=multi-user.target

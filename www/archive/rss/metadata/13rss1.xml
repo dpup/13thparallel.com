@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:sy="http://purl.org/rss/1.0/modules/syndication"
+         xmlns="http://purl.org/rss/1.0">
+
+  <channel rdf:about="http://13thparallel.org/metadata/news.xml">
+    <title>:: 13th Parallel::</title>
+    <link>http://13thparallel.org/</link>
+    <description>Issue , August 2002 :  </description>
+
+    <dc:language>en-uk</dc:language>
+    <dc:Creator>Daniel Pupius (mailto: rss@13thparallel.org)</dc:Creator>
+    <dc:Date>2002-08-30</dc:Date>
+
+    <sy:updateBase>2001-01-13</sy:updateBase>
+    <sy:updatePeriod>monthly</sy:updatePeriod>
+
+    <image rdf:resource="http://13thparallel.org/metadata/small_logo.gif" />
+
+    <items>
+      <rdf:Seq>
+        <rdf:li rdf:resource="http://13thparallel.org/?issue=2002.08&amp;title=about" />
+        <rdf:li rdf:resource="http://13thparallel.org/?issue=2002.08&amp;title=news" />
+        <rdf:li rdf:resource="http://13thparallel.org/?issue=2002.08&amp;title=archive" />
+        <rdf:li rdf:resource="http://13thparallel.org/?issue=2002.08&amp;title=links" />
+      </rdf:Seq>
+    </items>
+  </channel>
+
+  <image rdf:about="http://13thparallel.org/metadata/small_logo.gif">
+    <title>13th Parallel</title>
+    <url>http://13thparallel.org/metadata/small_logo.gif</url>
+    <link>http://13thparallel.org/</link>
+  </image>
+
+  <item rdf:about="http://13thparallel.org/?issue=2002.08&amp;title=about">
+    <title>About</title>
+    <description>Information on 13th Parallel and the people behind it.</description>
+    <link>http://13thparallel.org/?issue=2002.08&amp;title=about</link>
+  </item>
+
+  <item rdf:about="http://13thparallel.org/?issue=2002.08&amp;title=news">
+    <title>News</title>
+    <description>General information about 13th Parallel, cool new sites and industry related news.</description>
+    <link>http://13thparallel.org/?issue=2002.08&amp;title=news</link>
+  </item>
+
+  <item rdf:about="http://13thparallel.org/?issue=2002.08&amp;title=archive">
+    <title>Archive</title>
+    <description>Allows you to browse through past issues of 13th Parallel.</description>
+    <link>http://13thparallel.org/?issue=2002.08&amp;title=archive</link>
+  </item>
+
+  <item rdf:about="http://13thparallel.org/?issue=2002.08&amp;title=links">
+    <title>Links</title>
+    <description>A selection of cool links.</description>
+    <link>http://13thparallel.org/?issue=2002.08&amp;title=links</link>
+  </item>
+
+</rdf:RDF>

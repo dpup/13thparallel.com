@@ -1,0 +1,61 @@
+/* bezier examples sheet */
+
+body {
+	padding:		10px;
+	margin:			0px;
+	background:		#fff;
+	}
+
+.dot1	{
+	position:		absolute;
+	width: 			6px;
+	height:			6px;
+	background:		url('images/red_dot.gif');
+	font-size: 		1px;
+	}
+
+.dot2	{
+	position:		absolute;
+	width: 			6px;
+	height:			6px;
+	background:		url('images/blue_dot.gif');
+	font-size:		1px;
+	}
+
+.pix	{
+	position:		absolute;
+	width:			3px;
+	height:			3px;
+	background:		url('images/small_dot.gif');
+	font-size:		1px;
+	}
+
+p	{
+	margin:			0px 0px 14px 0px;
+	font-size:		11px;
+	font-family:	tahoma, arial, helvetica, sans-serif;
+	color:			#000;
+	background:		#fff;
+	}
+
+#divBox	{
+	position:		absolute;
+	top:			50px;
+	left:			50px;
+	width:			6px;
+	height:			6px;
+	background:		url('images/red_dot.gif');
+	font-size:		1px;
+	}
+
+#divLine{
+	position:		absolute;
+	top:			306px;
+	left:			0px;
+	width:			400px;
+	height:			1px;
+	background:		#000;
+	font-size:		1px;
+}
+
+/* end */

@@ -1,0 +1,58 @@
+/* 13thparallel columntext for dynamic version */
+.columntext {
+	font:				11px/140% verdana, sans-serif;
+	color:				#888;
+}
+.columntext h1 {
+	font:				bold 160%/112% arial, sans-serif;
+	margin:				0 0 0.5em 0;
+}
+.columntext h2 {
+	font:				bold 140%/130% arial, sans-serif;
+	margin:				0 0 0.7em 0;
+}
+.columntext h3 {
+	font:				bold 110%/140% arial, sans-serif;
+	margin:				0 0 0.2em 0;
+}
+.columntext h4 {
+	font:				500 110%/140% arial, sans-serif;
+	margin:				1em 0 0.1em 0;
+	font-variant:		small-caps;
+}
+.columntext pre {
+	font:				11px/140% "courier new", monospace;
+	margin:				0em 0em 0.9em 0em;
+}
+.columntext p {
+	margin:				0em 0em 1em 0em;
+}
+.columntext ul, .columntext ol {
+	margin-top:			0;
+	margin-bottom:		0.9em;
+}
+a {
+	color:				#666;
+	text-decoration:	underline;
+	outline:			none;
+}
+a:hover {
+	color:				#333;
+	text-decoration:	none;
+}
+.colbreak {
+	position: 			absolute;
+	visibility:			hidden;
+}
+td {
+	font:				normal 10px/10px verdana, sans-serif;
+	color:				#888;
+	border:				1px solid #DDD;
+}
+.centred {
+	text-align:			center;
+}
+.righted {
+	text-align:			right;
+}
+/* end */

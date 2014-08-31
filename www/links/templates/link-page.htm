@@ -1,0 +1,18 @@
+<!--# 
+	TEMPLATE FOR GENERIC LINKS PAGE DISPLAY
+	expects the variables:
+
+		sub-title		sub-title of the page
+		the-sections	area where result of links search will be placed
+		
+		in the form <#var#>
+#-->
+
+<p class="author"><#sub-title#></p>
+
+<#the-sections#>
+
+<form id="suggestform" action="/links/actions/verify/" method="post">
+<p><strong>Suggest a link</strong><br />
+http:// <input type="text" name="url" /> <input type="submit" value="Verify &raquo;" /></p>
+</form>

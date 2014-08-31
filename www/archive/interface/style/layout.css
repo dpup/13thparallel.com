@@ -1,0 +1,221 @@
+/* 13thparallel layout for dynamic version */
+html {
+	margin:				0;
+	padding:			0;
+}
+body {
+	margin:				0;
+	padding:			0;
+	width:				100%;
+	height:				100%;
+	overflow:			hidden;
+	background:			#fff;
+}
+img {
+	border:				0;
+}
+/* everything that has to show up is contained by this div */
+#divCanvas {
+	position:			absolute;
+	top:				0;
+	left:				0;
+	width:				796px;
+	height:				417px;
+	overflow:			hidden;
+}
+#divPage {
+	position:			absolute;
+	top:				66px;
+	left:				0;
+	width:				796px;
+	height:				350px;
+	overflow:			hidden;
+	background:			rgb(250,250,250) url(../images/bg_grid.gif);
+}
+/* the slider has relative position for mozilla, otherwise it would cause scrollbars to appear */
+#divPageSlider {
+	position:			relative;
+	top:				13px;
+	left:				0;
+	height:				340px;
+}
+#divRuler {
+	position:			absolute;
+	top:				405px;
+	left:				0;
+	width:				796px;
+	height:				12px;
+	clip:				rect(0px, 796px, 12px, 0px);
+	overflow:			hidden;
+	background:			rgb(242,242,244);
+	font-size:			1px;
+	line-height:		1px;
+}
+#divLocation {
+	position:			absolute;
+	top:				54px;
+	left:				0;
+	width:				796px;
+	height:				12px;
+	font:				10px/12px verdana, sans-serif;
+	color:				rgb(102,102,102);
+	background:			rgb(242,242,244);
+}
+#divArrowLeft {
+	position:			absolute;
+	top:				352px;
+	left:				10px;
+	width:				25px;
+	height:				43px;
+	background:			url(../images/arrow_left.gif) no-repeat;
+	cursor:				pointer;
+	cursor:				hand;
+}
+#divArrowRight {
+	position:			absolute;
+	top:				352px;
+	right:				10px;
+	width:				25px;
+	height:				43px;
+	background:			url(../images/arrow_right.gif) no-repeat;
+	cursor:				pointer;
+	cursor:				hand;
+}
+#divLinkBlock {
+	position:			absolute;
+	top:				407px;
+	left:				32px;
+	height:				8px;
+	width:				16px;
+	overflow:			hidden;
+	background:			rgb(186,195,200);
+	font-size:			1px;
+	line-height:		1px;
+}
+#divLinks {
+	position:			absolute;
+	top:				405px;
+	left:				0;
+	line-height:		12px;
+}
+#divTitles {
+	position:			absolute;
+	top:				406px;
+	left:				70px;
+	height:				12px;
+	font:				9px/9px verdana, sans-serif;
+	color:				#666;
+}
+#divMinus {
+	position: 			absolute;
+	top:				406px;
+	right:				30px;
+	width:				10px;
+	height:				10px;
+	line-height:		10px;
+	background:			url(../images/icon_minus.gif) no-repeat;
+	cursor:				pointer;
+	cursor:				hand;
+}
+#divPlus {
+	position: 			absolute;
+	top:				406px;
+	right:				18px;
+	width:				10px;
+	height:				10px;
+	line-height:		10px;
+	background:			url(../images/icon_plus.gif) no-repeat;
+	cursor:				pointer;
+	cursor:				hand;
+}
+#divLogo {
+	position: 			absolute;
+	top:				0;
+	right:				15px;
+	width:				285px;
+	height:				56px;
+}
+#divLoading {
+	position: 			absolute;
+	top:				0;
+	left:				0;
+	width:				100%;
+	height:				100%;
+	background:			#fff url(../images/13.gif) no-repeat left bottom;
+	z-index:			1000;
+}
+#divSiteContents {
+	position:			absolute;
+	top: 				40px;
+	left:				15px;	
+	height:				14px;
+	font:				bold 11px verdana, arial, helvetica, sans-serif;
+	color:				#c0c0c4;
+	text-decoration:	none;
+	text-transform:		capitalize;
+}
+#divIssueContents {
+	position:			absolute;
+	top: 				40px;
+	left:				-1000px;	
+	height:				14px;
+	font:				bold 11px verdana, arial, helvetica, sans-serif;
+	color:				#c0c0c4;
+	text-decoration:	none;
+	text-transform:		capitalize;
+	background:			white;
+	visibility:			hidden;
+}
+#divContentsToggle {
+	position:			absolute;
+	top: 				40px;
+	left:				0px;	
+	height:				14px;
+	font:				bold 11px verdana, arial, helvetica, sans-serif;
+	color:				#c0c0c4;
+	text-decoration:	none;
+	background:			white;
+	cursor:				pointer;
+	cursor:				hand;
+	visibility:			hidden;
+}
+.contents {
+	color:				#c0c0c4;
+	text-decoration:	none;
+}
+.contents:hover {
+	color:				#808080;
+	text-decoration:	none;
+}
+.news {
+	padding:			2px;
+	margin:				5px;
+	width:				97%;
+	font:				100%/125% verdana, arial, helvetica, sans-serif;
+	color:				#999;
+}
+.newsHead {
+	padding:			2px 3px 2px 3px;
+	font-weight:		bold;
+	background:			#efeff0;
+}
+.newsBody {
+	padding:			4px 1px 0px 1px;
+}
+.newsAuthor {
+	padding:			2px;
+	text-align:			right;
+}
+#divSizer {
+	position:			absolute;
+	top:				-10000px;
+	left:				-10000px;
+	visibility:			hidden;
+}
+#divContent {
+	position:			absolute;
+	top:				-10000px;
+	left:				-10000px;
+	visibility:			hidden;
+}
+/* end */

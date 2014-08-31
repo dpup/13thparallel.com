@@ -1,0 +1,261 @@
+<h1>Mathematics &amp; DHTML</h1>
+<p>By Daniel Pupius, February 2002</p>
+
+<p>Now it may seem that this site is going to be very Maths related but that's
+just a coincidence.&nbsp; I wrote this tutorial on Maths &amp; DHTML
+because of several requests after the Bezi&eacute;r tutorial last month.&nbsp; This
+month we'll be looking at some basic mathematical principles and how they can be used to liven up
+your site and have some fun with DHTML.</p>
+<h2>Using timeouts</h2>
+<p><code>setTimeout()</code> is a JavaScript function that is an integral part of animating
+objects in DHTML, it allows us to run JavaScript code after a given delay.&nbsp; There are two methods that we can use (they will be
+known as &quot;method 1&quot; and &quot;method 2&quot; throughout the tutorial).</p>
+<p>Method 1 performs a step of the animation at each timeout, while easy
+this leads to problems with browsers that render the page slowly: CPU times and
+RAM can vary drastically, and the operating system and browser effect the time it takes to render a
+page.</p>
+<p>To workaround this problem, the method 2 defines a specific amount of time for the
+animation to last.&nbsp; We can then calculate where in the animation the object
+should be each time we call a timeout - this means that on fast machines the animation
+will be nice and smooth, while it will appear jerky on slow machines it will
+still take the defined amount of time.</p>
+<p><a href="example1.htm">Example 1</a>:&nbsp;
+a very basic script that demonstrates animation between 2 points, specifying
+explicitly how many pixels to move each iteration.<br />
+<a href="example2.htm">Example 2</a>:&nbsp; performs a movement that lasts for a specified
+amount of time.</p>
+
+
+<h2>Pythagoras</h2>
+<p><img src="pythag.gif"width="100" height="74" alt="pythagoras' triangle"  class="right" />Pythagoras' theorem states:<br />
+&quot;The square of the hypotenuse of a right angled triangle is equal to the sum of the squares of
+the other two sides.&quot;</p>
+<p>i.e.<br />
+<code>(hypotenuse)<sup>2</sup> = x<sup>2</sup> + y<sup>2</sup></code><br />
+or<br />
+<code>hypotenuse = &#8730;(x<sup>2</sup> + y<sup>2</sup>)</code></p>
+<p>Now, this is very useful when performing animations as if we know the
+coordinates of 2 points then we can calculate the distance between them.</p>
+<p>So in JavaScript:</p>
+<pre>function distance(x1,y1,x2,y2) {
+	//find horizontal distance (x)
+	var x = x2 - x1;
+	//find vertical distance (y)
+	var y = y2 - y1;
+	//do calculation
+	var hyp = Math.sqrt(x*x + y*y);
+	return hyp;
+}</pre>
+
+
+<h2>Trigonometry</h2>
+
+<p>Trigonometry is a fundamental part of mathematics and like Pythagoras is
+based around right-angled triangles.&nbsp; Its applications are extensive and provides a base for more complex mathematics
+such calculus, linear algebra and statistics.</p>
+
+<p><img src="trig.gif" class="right" width="100" height="100" alt="right-angled triangle as part of circle" />The
+diagram on the right shows a right-angled triangle as part of a circle.&nbsp;
+Theta (&#952;) is the angle traced out by a point moving from A to B around the
+circle,&nbsp;we can then make a right-angled triangle with a hypotenuse (hyp), a
+line opposite the angle (opp) and a line adjacent to the angle (adj) - the
+right-angle is formed between the opposite and the adjacent.&nbsp; We can now
+define any point on a circle using a right angled triangle.</p>
+
+<p>In order to calculate the various lines and angles on this diagram we use
+three basic functions and their inverses:<br />
+<code>tan &#952; = opp / adj</code><br />
+<code>sin &#952; = opp / hyp</code><br />
+<code>cos &#952; = adj / hyp</code><br />
+These are the &quot;<i>tangent of an angle</i>&quot;, &quot;<i>sine of an angle</i>&quot;
+and the &quot;<i>cosine of an angle</i>&quot; respectively.</p>
+
+<p>Their inverses are as follows, such that f(f<sup>-1</sup>(x)) = x:<br />
+<code> &#952; = tan<sup>-1</sup>(opp / adj)&nbsp; or&nbsp; &#952; = atan(opp / adj)</code><br />
+<code> &#952; = sin<sup>-1</sup>(opp / hyp)&nbsp; or&nbsp; &#952; = asin(opp / hyp)</code><br />
+<code> &#952; = cos<sup>-1</sup>(adj / hyp)&nbsp; or&nbsp; &#952; = acos(adj / hyp)</code></p>
+
+<p>Now, we would use the first three functions to calculate the other sides of a
+right-angled triangle if we already know the values of the angle and one
+side.&nbsp; The inverses are used to find the angles in a triangle if we already
+know the values of two sides, in practice we only normally use atan and Pythagoras.</p>
+
+<p>In JavaScript the following functions exist as part of the Math object and
+are particularly useful (there are a couple more that we rarely need to use):</p>
+
+<pre>Math.tan(angle);  // Tangent of an angle
+Math.sin(angle);  // Sine of an angle
+Math.cos(angle);  // Cosine of an angle
+
+// Returns an angle between 2 sides
+// (between PI and -PI radians)
+Math.atan2(opp,adj);</pre>
+
+<p>Angles can be measured in terms of two different units, degrees and radians, 
+with a circle being made up of 360-degrees (360&#176;) or 2pi radians.</p>
+
+<p>Generally it is easier to think in terms of degrees, however <b> all the <a href="http://www.devguru.com/Technologies/ecmascript/quickref/math.html" class="external"> Math functions</a> use
+radians</b>.&nbsp; It is therefore a good idea to create a couple of functions that can flip
+between the two:</p>
+
+<pre>function degToRad(angle) {
+	return ((angle*Math.PI) / 180);
+}
+
+function radToDeg(angle) {
+	return ((angle*180) / Math.PI);
+}</pre>
+<p><a href="example3.htm">Example 3</a> : Using trigonometry animate an object in a circle (demo of key principles)</p>
+
+
+
+<h2>Motion under constant acceleration</h2>
+<p>The following equations are very useful in calculations with moving bodies:<br />
+<code>v = u + at</code><br />
+<code>s = ut + &#189;at<sup>2</sup></code><br />
+<code>v<sup>2</sup> = u<sup>2</sup> + 2as</code><br />
+<code>s = &#189;t(u + v)</code><br />
+where:<br />
+&nbsp;&nbsp;&nbsp; v = velocity at end of movement<br />
+&nbsp;&nbsp;&nbsp; u = velocity at start of movement<br />
+&nbsp;&nbsp;&nbsp; a = acceleration<br />
+&nbsp;&nbsp;&nbsp; t = time<br />
+&nbsp;&nbsp;&nbsp; s = displacement (distance with sign as well as magnitude)</p>
+<p>For simple acceleration we can
+simply increase the speed by a set amount after each iteration:<br />
+<code>v += a</code><br />
+<code>x += v</code></p>
+<p> <a href="example4.htm">Example 4</a>&nbsp;- demonstration of acceleration</p>
+
+
+
+<h2>Motion in 2D</h2>
+<p>So far, with exception of the circle, the examples have only shown movement
+in 1-dimension.&nbsp; We'll now have a look at using Pythagoras, Trigonometry
+and Acceleration to move an object between two arbitrary points on the page.</p>
+<h3>Method 1</h3>
+<p>The first thing we do is find
+the angle between the start position and the end position:<br />
+<code> &#952; = atan ( (y2-y1) / (x2-x1) )</code><br />
+where (x1,y1) is the object's current coordinates and (x2,y2) is the destination
+coordinates.</p>
+<p>We then use this result to find the horizontal and vertical components of the
+velocity:<br />
+<code>vx = v * cos(&#952;)</code><br />
+<code>vy = v * sin(&#952;)</code></p>
+<p>Now, at each iteration we increment the objects coordinates by (vx,vy).</p>
+<p>This is all very well, however, how do we know when the animation has
+finished?</p>
+<p>Well, we can use the distance function defined in the Pythagoras section and
+if the distance to the final destination is smaller than the velocity then the
+animation is over and we move the object to it's end position.</p>
+<!--<p><a href="/tutorial/2002.02.maths.example5.htm" onclick="popup('/tutorial/2002.02.maths.example5.htm', 'examples', 400, 400, 'c', 'c', 'no', 'no'); return false;">Example 5</a>
+shows this in action without acceleration<br />
+<a href="/tutorial/2002.02.maths.example6.htm" onclick="popup('/tutorial/2002.02.maths.example6.htm', 'examples', 400, 400, 'c', 'c', 'no', 'no'); return false;">Example 6</a>
+shows this in action with acceleration</p>-->
+<h3>Method 2</h3>
+<p>If you remember, &quot;method 2&quot; defines a set amount of time for the&nbsp;animation
+to take place.</p>
+<p>Again, we calculate the angle to the end point and we also calculate the
+total distance to be covered:<br />
+<code> &#952; = atan ( (y2-y1) / (x2-x1) )</code><br />
+<code>Total Distance = &#8730;((x2 - x1)<sup>2</sup> + (y2-y1)<sup>2</sup>)</code></p>
+<p>If we keep track of how much time has passed since the start of the animation
+then we can calculate what distance should have been covered so far:<br />
+<code>Current Distance = Total Distance * Time Passed/Duration</code></p>
+<p>We can then get:<br />
+<code>x = x1 + [Current Distance]*cos(&#952;)</code><br />
+<code>y = y1 + [Current Disance]*sin(&#952;)</code></p>
+<!--<p><a href="/tutorial/2002.02.maths.example7.htm" onclick="popup('/tutorial/2002.02.maths.example7.htm', 'examples', 400, 400, 'c', 'c', 'no', 'no'); return false;">Example 7</a>
+shows this in action without acceleration<br />
+<a href="/tutorial/2002.02.maths.example8.htm" onclick="popup('/tutorial/2002.02.maths.example8.htm', 'examples', 400, 400, 'c', 'c', 'no', 'no'); return false;">Example 8</a>
+shows this in action with acceleration (uses a Beziér curve to calculate the
+acceleration)</p>-->
+
+
+<h2>Forces</h2>
+<p>This is just a bit of fun and shows two examples of forces applied to free
+moving objects (we'll call them particles).&nbsp; Since there is no destination
+for the particle we need to represent the velocity as a vector quantity (i.e. it
+has direction &amp; magnitude).&nbsp; We could do this by having a X and Y
+component for velocity, but what is nicer, if a bit more complex, is to have an
+angle and a speed.&nbsp; We will make an object for the velocity:</p>
+<pre>var v = {speed: 0, angle: 0};</pre>
+<p>To move the particle you can simple increase the object's left &amp; right
+style attributes at each timeout using:</p>
+<pre>x += v.speed * Math.cos(degToRad(v.angle));
+y += v.speed * Math.sin(degToRad(v.angle));</pre>
+<h3>Gravity</h3>
+<p>Gravity is a force that is only applied to the y component of velocity.&nbsp;
+The Earth's gravitational force is measured at 9.8m/s<sup>2</sup>.&nbsp; We
+could calculate how many pixels are in a meter (on average) and then work out
+the exact acceleration in pixels/s<sup>2</sup>, but we will just use a value that
+makes it look reasonable.</p>
+<p>To update the velocity we need to convert it into x and y components, apply
+the acceleration and then convert it back to a vector, this may seem like a
+round about method but in the long term it is better to represent velocity as
+speed and direction.</p>
+<pre>var gravity = 1.5;
+var vx = v.speed * Math.cos(degToRad(v.angle));
+var vy = v.speed * Math.sin(degToRad(v.angle));
+vy += gravity;
+v.speed = Math.sqrt((vx*vx)+(vy*vy));
+v.angle = Math.atan(vy,vx);</pre>
+<h3>Bounding box</h3>
+<p>An example using the above code wouldn't be very interesting since the
+particles would quite soon fly off the screen.&nbsp; What we can do instead is
+reverse the particle when it hits a border:</p>
+<pre>var vx = v.speed * Math.cos(degToRad(v.angle));
+var vy = v.speed * Math.sin(degToRad(v.angle));
+if((x&lt;0 &amp;&amp; vx&lt;0) || (x&gt;maxX &amp;&amp; vx&gt;0)) vx *= -1;
+if((y&lt;0 &amp;&amp; vy&lt;0) || (y&gt;maxY &amp;&amp; vx&gt;0)) vy *= -1;
+v.speed = Math.sqrt((vx*vx)+(vy*vy));
+v.angle = Math.atan2(vy,vx);</pre>
+<p>To make it even more realistic we can add a damping effect, where energy is
+lost when the particle hits a wall.&nbsp; This is easily done by multiplying
+by a number greater than minus-one but less than zero.&nbsp; e.g. -0.9</p>
+<h3>Friction</h3>
+<p>Friction is really simple.&nbsp; We simply reduce the speed by a certain quantity
+every iteration, e.g.</p>
+<pre>v.speed *= 0.9;</pre>
+<p><a href="example9.htm">Example 9</a>
+ - shows boxes bouncing around a container<br />
+<a href="example10.htm">Example 10</a> - shows boxes bouncing around a container effected by gravity<br />
+<a href="example11.htm">Example 11</a>
+ - lots of little particles succumbing to friction<br />
+<a href="example12.htm">Example 12</a> - complex&nbsp;
+example showing particles being &quot;fired&quot;
+into a denser medium so that friction increases and gravity decreases</p>
+
+
+<h2>Conclusion</h2>
+<p>Well that's it.&nbsp; I hope at least a couple of people have learned
+something from this.&nbsp; I'd be very interested to hear your comments about
+this tutorial, especially any additions that might prove useful, also any
+mistakes I've made :)</p>
+
+
+
+<h2>Examples</h2>
+
+<p>Here&#8217;s a list of all the examples used in this tutorial:</p>
+
+<p><a href="example1.htm">Example 1</a> - a very basic script that demonstrates animation between 2 points, specifying
+explicitly how many pixels to move each iteration<br />
+<a href="example2.htm">Example 2</a> - performs a movement that lasts for a specified amount of time<br />
+<a href="example3.htm">Example 3</a> - using trigonometry animate an object in a circle<br />
+<a href="example4.htm">Example 4</a> - demonstration of acceleration<br />
+<!--<a href="/tutorial/2002.02.maths.example5.htm" onclick="popup('/tutorial/2002.02.maths.example5.htm', 'examples', 400, 400, 'c', 'c', 'no', 'no'); return false;">Example 5</a>
+ - iteration based motion in 2D without acceleration<br />
+<a href="/tutorial/2002.02.maths.example6.htm" onclick="popup('/tutorial/2002.02.maths.example6.htm', 'examples', 400, 400, 'c', 'c', 'no', 'no'); return false;">Example 6</a>
+ - iteration based motion in 2D with acceleration<br />
+<a href="/tutorial/2002.02.maths.example7.htm" onclick="popup('/tutorial/2002.02.maths.example7.htm', 'examples', 400, 400, 'c', 'c', 'no', 'no'); return false;">Example 7</a>
+ - duration based motion in 2D without acceleration<br />
+<a href="/tutorial/2002.02.maths.example8.htm" onclick="popup('/tutorial/2002.02.maths.example8.htm', 'examples', 400, 400, 'c', 'c', 'no', 'no'); return false;">Example 8</a>
+ - duration based motion in 2D with acceleration (uses a Beziér curve to
+calculate the acceleration)<br />-->
+<a href="example9.htm">Example 9</a> - shows boxes bouncing around a container<br />
+<a href="example10.htm">Example 10</a> - shows boxes bouncing around a container effected by gravity<br />
+<a href="example11.htm">Example 11</a> - lots of little particles succumbing to friction<br />
+<a href="example12.htm">Example 12</a> - complex example showing particles being &#8220;fired&#8221; into a denser medium so that friction increases and gravity decreases</p>
+

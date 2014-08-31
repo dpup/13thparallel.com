@@ -1,0 +1,131 @@
+/* 13thparallel basic styles for unscripted version */
+
+.colbreak, .scripted {
+	display:			none;
+}
+html {
+	margin:				0;
+	padding:			0;
+}
+body {
+	margin:				0;
+	padding:			0;
+	width:				100%;
+	height:				100%;
+	background:			#fff url(../images/bg_grid.gif);
+}
+#divCanvas {
+	margin-left:		auto;
+	margin-right:		auto;
+	width:				450px;
+	padding:			20px 0 0 20px;
+}
+#divLogo {
+	text-align:			right;
+}
+#divSiteContents {
+	height:				14px;
+	font:				bold 11px verdana, arial, helvetica, sans-serif;
+	width:				100%;
+	text-align:			right;
+	text-transform:		capitalize;
+}
+#divIssueContents {
+	height:				14px;
+	font:				bold 11px verdana, arial, helvetica, sans-serif;
+	text-align:			right;
+	text-transform:		capitalize;
+}
+.contents {
+	color:				#b9b9bd;
+	text-decoration:	none;
+}
+.contents:hover {
+	color:				#808080;
+	text-decoration:	none;
+}
+#divContent, .columntext {
+	margin:				0 auto;
+	font:				12px/140% verdana, arial, helvetica, sans-serif;
+	color:				#909090;
+	width:				450px;
+	padding:			15px 15px 15px 20px;
+}
+.columntext h1 {
+	font:				bold 160%/112% arial, sans-serif;
+	margin:				0 0 0.2em 0;
+}
+.columntext h2 {
+	font:				bold 130%/130% arial, sans-serif;
+	margin:				0.9em 0 0.1em 0;
+}
+.columntext h3 {
+	font:				bold 120%/140% arial, sans-serif;
+	margin:				0 0 0.1em 0;
+}
+.columntext h4 {
+	font:				500 120%/140% arial, sans-serif;
+	margin:				1em 0 0.1em 0;
+	font-variant:		small-caps;
+}
+p {
+	margin-top:			0;
+	text-align:			justify;
+}
+pre {
+	font-size:			12px;
+	font-family:		"courier new", monospace;
+}
+a {
+	color:				#606060;
+	text-decoration:	underline;
+	outline:			none;
+}
+a:hover {
+	color:				#333;
+	text-decoration:	none;
+}
+b, strong {
+	font-weight:		bold;
+}
+i, em {
+	font-style:			italic;
+}
+.news {
+	width:				436px;
+	padding:			2px;
+	margin:				5px;
+	font:				12px/130% verdana, arial, sans-serif;
+	color:				#909090;
+}
+.newsBody {
+	padding:			5px 0px 0px 0px;
+}
+.newsHead {
+	border:				0px solid #e0e0e0;
+	background:			#eaeaea;
+	padding:			2px 3px 2px 3px;
+	margin:				1px 0px 0px 0px;
+	font:				bold 10px verdana, arial, sans-serif;
+}
+.newsAuthor {
+	padding:			2px;
+	border-width:		0px 0px 0px 0px;
+	border-style:		solid;
+	border-color:		#ddd;
+	text-align:			right;
+}
+#divRuler {
+	position:			relative;
+	top:				3px;
+	width:				450px;
+	height:				1px;
+	clip:				rect(0px, 450px, 1px, 0px);
+	overflow:			hidden;
+	font:				1px/1px verdana, arial, sans-serif;
+	background:			#ddd;
+}
+td {
+	font:				normal 10px/10px verdana, sans-serif;
+}
+/* end */

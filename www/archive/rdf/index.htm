@@ -1,0 +1,239 @@
+<h1>An Introduction to the Resource Description Framework (RDF)</h1>
+<p class="author">By Daniel Pupius, June 2002</p>
+
+<p>One of the original aims for the world wide web was that as well as humans
+being able to read and understand the content, so could machines.&nbsp; As it is
+the www <strong>is</strong> <em>machine-readable</em>, but for the most part it is not <em>machine-understandable</em>.&nbsp;
+One proposed solution to this problem is the use of <em>metadata</em> to describe
+the data contained within the web.&nbsp; Metadata is &quot;data about
+data&quot;, for example a library catalogue is metadata since is describes the
+books contained within that library.&nbsp; In this context metadata is data that
+describes Web resources.</p>
+<p>The Resource Description Framework (RDF) is a W3C recommendation that is a
+foundation for processing metadata.&nbsp; It allows applications to exchange
+machine-understandable information on the web.&nbsp; It can be used in a variety
+of application areas for example:<br />
+&nbsp;- <strong>resource discovery</strong>, to provide better search engine capabilities<br />
+&nbsp;- <strong>cataloguing</strong>, for describing the content and relationships for a
+particular website<br />
+&nbsp;- <strong>knowledge sharing &amp; exchange</strong> for intelligent software agents<br />
+&nbsp;- <strong>describe collections</strong> of pages that represent one logical document<br />
+&nbsp;- <strong>describe intellectual property rights<br />
+&nbsp;</strong>- <strong>privacy preferences</strong>, of both a user and a website<br />
+&nbsp;- <strong>digital signatures</strong></p>
+<p>This tutorial provides an introduction to RDF, we will discuss a model for representing RDF metadata and a
+syntax based on XML. The XML syntax is only possible syntax for RDF, but is the
+most easy and most relevant.&nbsp; We will also be looking at RSS - which is an
+implementation of RDF for sharing news and article information.</p>
+
+<h2>Basic RDF Model</h2>
+<p>The basis of RDF is a model for representing named properties and
+property values.&nbsp; The properties can be thought of as attributes of a
+resource and correspond to the traditional attribute-value pairs.&nbsp; The
+basic data model consists of three object types:<br />
+1.&nbsp; A resource<br />
+2.&nbsp; A property<br />
+3.&nbsp; A statement</p>
+<p>The <strong>resource</strong> is anything that can have a URI.&nbsp; It may be part of
+a web page or even a whole collection of pages.</p>
+<p>The <strong>property</strong> is a resource that has a name and is used to describe a
+specific aspect, characteristic, attribute or relation used to describe a
+resource.&nbsp; Since a property is a resource, a property can have properties,
+but most of the time we are only really interested in the name.</p>
+<p>A specific resource together with a named property plus a value of that
+property for that resource is an RDF <strong>statement</strong>.&nbsp; These parts are
+known as the <em>subject</em>, the <em>predicate</em>, and the <em>object</em>.&nbsp;
+The object of a statement (i.e. the property value) can be the URI of another resource or
+it can be a literal.&nbsp; So a statement could be:</p>
+<p>&quot;The <strong>Author</strong> of <strong>http://13thparallel.org/tutorial/2002.06.rdf.htm</strong>
+is <strong>Daniel Pupius</strong>&quot;</p>
+<p>or it could be:</p>
+<p>&quot;The <strong>Author</strong> of <strong>http://13thparallel.org/tutorial/2002.06.rdf.htm</strong>
+is <strong>http://pupius.co.uk/info.rdf</strong>&quot;</p>
+<p>where info.rdf is a resource that
+describes me, the author.</p>
+<p>These two statements are shown below in RDF/XML syntax:</p>
+<pre>&lt;rdf:Description about=&quot;http://13thparallel.org/tutorial/2002.06.rdf.htm&quot;&gt;
+  &lt;Author&gt;Pupius Daniel&lt;/Author&gt;
+&lt;/rdf:Description&gt;</pre>
+<pre>&lt;rdf:Description about=&quot;http://13thparallel.org/tutorial/2002.06.rdf.htm&quot;&gt;
+  &lt;Author rdf:resource=&quot;http://pupius.co.uk/info.rdf&quot;' /&gt;
+&lt;/rdf:Description&gt;</pre>
+
+<h2>Features of RDF</h2>
+<p>From the W3C FAQ:</p>
+<p>In general, RDF provides the basis for generic tools for authoring,
+manipulating, and searching machine understandable data on the Web thereby
+promoting the transformation of the Web into a machine-processable repository of
+information.</p>
+<p>RDF provides the following features:<br />
+&nbsp;- interoperability of metadata<br />
+&nbsp;- machine understandable semantics for metadata<br />
+&nbsp;- better precision in resource discovery than full text search<br />
+&nbsp;- future-proofing applications as <a href="http://www.w3.org/TR/PR-rdf-schema" class="external">schemas</a>
+evolve</p>
+<p>Further development will enable RDF to also provide:<br />
+&nbsp;- a uniform query capability for resource discovery<br />
+&nbsp;- a processing rules language for automated decision-making about Web
+resources<br />
+&nbsp;- language for retrieving metadata from third parties</p>
+
+<h2>Dublin Core</h2>
+<p>The Dublin Core (DC) metadata standard is a simple yet effective element set
+for describing a wide range of networked resources.&nbsp; It provides a semantic
+vocabulary for describing the &quot;core&quot; information properties, such as
+&quot;Description&quot; and &quot;Creator&quot; and &quot;Date&quot;, of a
+resource.&nbsp; The DC can be used with other metadata systems, but is
+particularly powerful when used in conjunction with the RDF.</p>
+<p>By using the 15 elements in the <a href="http://dublincore.org/documents/dces/" class="external">Dublin
+Core Metadata Element Set</a> it is more likely that your metadata will be both
+human- and machine-understandable, since RDF itself only provides a model, not a
+vocabulary.&nbsp; DC means that the value &lt;author&gt; actually has a
+meaning.&nbsp; (Note: there <em>are </em>other modules and vocabularies that may
+be more relevant to a particular situation.)</p>
+<p>An example XML document using the Dublin Core is:</p>
+<pre>&lt;?xml:namespace ns=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; prefix=&quot;RDF&quot; ?&gt;
+&lt;?xml:namespace ns=&quot;http://purl.oclc.org/DC/&quot; prefix=&quot;DC&quot; ?&gt;
+&lt;RDF:RDF&gt;
+  &lt;RDF:Description RDF:HREF=&quot;http://uri-of-some-document&quot;&gt;
+    &lt;DC:Title&gt;Some sample document&lt;/DC:Title&gt;
+    &lt;DC:Subject&gt;some, keywords, separated, by, commas&lt;/DC:Subject&gt;
+    &lt;DC:Creator&gt;John Smith&lt;/DC:Creator&gt;
+  &lt;/RDF:Description&gt;
+&lt;/RDF:RDF&gt;</pre>
+<p>Use the <a href="http://dublincore.org/documents/dces/" class="external">Element Set</a>  to
+create more complex descriptions of your resources.</p>
+
+<h2>RDF Syntax</h2>
+<p>For this chapter we will continue using the Dublin Core Element Set and
+explore some of the ways you can arrange the metadata.</p>
+<h3>XML Syntax</h3>
+<p>The XML document can be formatted as shown above, however, the following is
+also acceptable:</p>
+<pre>&lt;? xml version=&quot;1.0&quot; ?&gt;
+&lt;RDF xmlns=<strong>&quot;</strong>http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;<strong> </strong>xmlns:DC=<strong>&quot;</strong>http://purl.oclc.org/DC/<strong>&quot;</strong>&gt;
+  &lt;Description about=&quot;http://uri-of-some-document&quot; &gt;
+    &lt;DC:Title&gt;Some sample Document&lt;/DC:Title&gt;
+    &lt;DC:Creator&gt;John Smith&lt;/DC:Creator&gt;
+    &lt;DC:Subject&gt;some, keywords, separated, by, commas&lt;/DC:Subject&gt;
+  &lt;/Description&gt;
+&lt;/RDF&gt;</pre>
+<p>and you could also format it like:</p>
+<pre>&lt;? xml version=&quot;1.0&quot; ?&gt;
+&lt;?xml:namespace ns=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; prefix =&quot;RDF&quot; ?&gt;
+&lt;?xml:namespace ns=&quot;http://purl.oclc.org/DC/&quot; prefix=&quot;DC&quot; ?&gt;
+&lt;RDF:RDF&gt;
+  &lt;RDF:Description
+     about=&quot;http://uri-of-some-document&quot;
+     DC:Title=&quot;Some sample Document&quot;
+     DC:Creator=&quot;John Smith&quot;
+     DC:Subject=&quot;some, keywords&quot;
+   /&gt;
+&lt;/RDF:RDF&gt;</pre>
+<p>which is especially useful for embedding the RDF in XHTML or another tagging
+language that displays the content between &gt; and &lt;</p>
+<h3>Complex Properties</h3>
+<p>You can create complex properties by nesting properties.&nbsp; For example:</p>
+<pre>&lt;DC:Creator parseType=&quot;Resource&quot;&gt;
+  &lt;x:name&gt;Pupius Daniel&lt;/x:name&gt;
+  &lt;x:bday&gt;1979-12-12&lt;/x:bday&gt;
+  &lt;x:geo&gt;Sheffield, England&lt;/x:geo&gt;
+&lt;/DC:Creator&gt;</pre>
+<p>Where x is a namespace vocabulary such as <a href="http://www.dstc.edu.au/RDU/RDF/draft-iannella-vcard-rdf-00.txt" class="external">vcard</a>.</p>
+<h3>Using literal</h3>
+<p>Using the parseType attribute with the value &quot;literal&quot; you can
+allow XML as the value, for example:</p>
+<pre>&lt;DC:AddressLabel parseType=&quot;Literal&quot;&gt;
+  &lt;b&gt;Some person&lt;/b&gt;
+  &lt;center&gt;169 some street&lt;/center&gt;
+  &lt;i&gt;City&lt;/i&gt;
+  &lt;ucase&gt;england&lt;/ucase&gt;
+&lt;/DC:Creator&gt;</pre>
+<h3>Unordered lists</h3>
+<p>RDF allows multiple values, and unordered lists are called bags.&nbsp; For
+example 13thParallel creators could be represented using:</p>
+<pre>&lt;DC:Creator&gt;
+  &lt;bag&gt;
+    &lt;li&gt;Pupius Daniel&lt;/li&gt;
+    &lt;li&gt;Ouwerkerk Michael&lt;li&gt;
+  &lt;/bag&gt;
+&lt;/DC:Creator&gt;</pre>
+<h3>Ordered lists</h3>
+<p>Similar to &lt;bag&gt;, &lt;seq&gt; allows multiple values, however their
+order is important.&nbsp; So, if we wanted an alphabetical list of creators we
+could use &lt;seq&gt; to ensure they are kept in that order:</p>
+<pre>&lt;DC:Creator&gt;
+  &lt;seq&gt;
+    &lt;li&gt;Ouwerkerk Michael&lt;li&gt;
+    &lt;li&gt;Pupius Daniel&lt;/li&gt;
+  &lt;/seq&gt;
+&lt;/DC:Creator&gt;</pre>
+<h3>Alternative values</h3>
+<p>A good example for the use of &lt;alt&gt; is when using multiple languages in
+conjunction with the xml:lang attribute.&nbsp; For example:</p>
+<pre>&lt;DC:Title&gt;
+  &lt;alt&gt;
+    &lt;li xml:lang=&quot;en&quot;&gt;Introduction to RDF&lt;/li&gt;
+    &lt;li xml:lang=&quot;fr&quot;&gt;Introduction &agrave; RDF&lt;/li&gt;
+    &lt;li xml:lang=&quot;de&quot;&gt;Einleitung in ein RDF&lt;/li&gt;
+  &lt;/alt&gt;
+&lt;/DC:Title&gt;</pre>
+<h3>Resources as properties</h3>
+<p>As seen in one of the earlier examples, it is possible to specify a resource
+for a property:</p>
+<pre>&lt;DC:Creator rdf:resource=&quot;http://pupius.co.uk/info.rdf&quot; /&gt;</pre>
+<h3>Using RDF in HTML</h3>
+<p>The best way to link to your RDF code from a HTML is to create an external
+file and use the &lt;LINK&gt; tag as follows:</p>
+<pre>&lt;link rel=&quot;meta&quot; href=&quot;index.php.rdf&quot; /&gt;</pre>
+<p>(If you are describing a single page, then a good convention is to use the
+filename of that page.)</p>
+
+<h2>RDF Site Summary (RSS)</h2>
+<p>You may have seen <a href="http://www.scottandrew.com/scottandrew.xml" class="external">lots</a>
+<a href="http://www.webreference.com/services/news/" class="external">of</a> <a href="http://www.powazek.com/syndicate/" class="external">sites</a>
+offering news feeds recently, that allow you to automatically include links to
+other people's articles and news items in your site.&nbsp; On the surface this
+may not seem too appealing!&nbsp; Why would you want to post someone else's news
+on your site?&nbsp; However, there are many useful ways that RSS can be used.</p>
+<p>One example would be a network of sites, with each site having their own RSS
+feed for recent articles.&nbsp; A central site could then then broadcasts the
+article lists for the entire network.&nbsp; There are obviously many more uses,
+that I'm sure you can think of, but my points is that RSS is an easy way to
+share information.</p>
+<p>While RSS 1.0 is available many people still use RSS 0.91, as it is
+easier.&nbsp; Version 1.0 is similar but is a more strict RDF.&nbsp;&nbsp; From
+the examples you
+should be able to create your own RSS file to share your content.</p>
+<h3>Example (0.91)</h3>
+<p>This example shows a simple RSS 0.91 file with 3 items.&nbsp; While
+this is an older version of RSS it has a simpler syntax and many of the scripts
+for processing RSS feeds still use this version. <a href="examples1.xml"><strong>View</strong></a></p>
+<h3>Example (1.0)</h3>
+<p>Again this file has 3 items, but as you can see it has a different syntax: <a href="examples2.xml"><strong>View</strong></a></p>
+<h3>RSS Tools</h3>
+<p><a href="http://brandbenbrown.com/display.html/rssmonkey" class="external">RSS Monkey</a> -
+PERL script for processing RSS files, and outputting HTML.<br />
+<a href="http://www.jayeckles.com/news/index.html" class="external">JERSS</a> - Java Servlet for
+displaying RSS feeds.<br />
+<a href="http://www.tnl.net/how/asp/RSS/" class="external">RSS to ASP</a> - ASP tools for
+converting RSS feeds to WML, HTML.&nbsp; Works with 0.92 or 1.0<br />
+<a href="http://www.thewebmasters.net/" class="external">phpRSS</a> - a php class for RSS
+handling</p>
+
+<h2>Conclusion</h2>
+<p>There is a lot more to RDF than is described in this tutorial, it merely
+functions as an introduction and enables you to create simple RDF documents that
+describe your sites and resources.&nbsp; RDF is very powerful and if more people
+adopt it as a means of describing their sites then it should make the web a much
+easier place to navigate and share information.</p>
+
+<h2>Resources</h2>
+<p>Enterprise XML by Robert Standefer (ISBN 0-12-663355-X)<br />
+<a href="http://www.xml.com/pub/a/2001/01/24/rdf.html">What is RDF?</a><br />
+<a href="http://www.w3.org/RDF/">W3C Resource Description Framework (RDF)  activity page</a><br />
+<a href="http://www.w3.org/RDF/FAQ">W3C RDF FAQ</a><br />
+<a href="http://dublincore.org/documents/1998/09/dces/#">Dublin Core Element Set</a><br />
+<a href="http://groups.yahoo.com/group/rss-dev/files/namespace.html">RDF Site Summary 1.0</a><br />
+<a href="http://www.oreillynet.com/rss/">RSS Dev Center</a>
+</p>

@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>sigslot test #1</title>
+		<script type="text/javascript" language="JavaScript" src="sigslot_core.js"></script>
+		<script type="text/javascript" language="JavaScript">
+			function func1(arg){
+				alert(arg);
+			}
+
+			function func2(arg){
+				window.status = arg;
+			}
+			__sig__.connect(null, func1, null, func2); 	// the nulls indicate object placeholders
+									// since the functions aren't object methods,
+									// we set these placeholders to null.
+			__sig__.emit(func1, "foo");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

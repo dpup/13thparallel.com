@@ -1,0 +1,107 @@
+<h1>Custom DHTML Scrollbars</h1>
+<p class="author">By Daniel Pupius, June 2002</p>
+
+<p>By popular request here is a quick tutorial on how to make your own
+scrollbar.</p>
+<p>Making a scrollbar is actually deceptively easy and the principles described here should be applicable to many
+development environments.&nbsp; However, the examples will use DHTML and require a
+browser that supports DOM Level 1.</p>
+
+<h2>Step 1: Setting up the page</h2>
+<p>First off we'll set up the HTML elements that will make up the scrolled
+content and the scrollbar.&nbsp; We have a &quot;content&quot; element placed
+inside a &quot;container&quot; element, which will act as a view port.&nbsp;
+There will then be an element for
+the scroll-area, and another element for the scrollbar itself.</p>
+<pre>&lt;div id=&quot;container&quot;&gt;
+  &lt;div id=&quot;content&quot;&gt;
+    .... lots of content here ....
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;scrollArea&quot;&gt;
+  &lt;div id=&quot;scroller&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+<p>The &quot;container&quot; div should be set up with height, width and clip
+values or overflow set to hidden; &quot;content&quot; should only have width set, this is so we can get
+the computed height through code; &quot;scrollArea&quot; should have height and
+width set; and &quot;scroller&quot; needs width set and an initial height, we
+will change its height through code so that the scrollbar's height is relative
+to the length of the document.</p>
+<p>The diagram on the next page shows a sample set up with the variables we are
+interested in.&nbsp; Note, that in this case the scrollArea's height is the same
+as the container's height - for the code we will use scrollAreaH as well.</p>
+
+<p><img src="scrollbar_diagram.gif" width="275" height="185" alt="Diagram of the different elements of a scroller." /></p>
+
+
+<h2>Step 2: Retrieving the heights</h2>
+<p>If you want your scrollbar to work with older browsers or you are using Flash
+the code here will be different.&nbsp; But for the time being we will use DOM1
+and the attribute &quot;offsetHeight&quot;:</p>
+<pre>var docH = document.getElementById(&quot;content&quot;).offsetHeight;</pre>
+<p>We retrieve the heights of the other elements we are interested in in the
+same way:</p>
+<pre>var contH = document.getElementById(&quot;container&quot;).offsetHeight;
+var scrollAreaH = document.getElementById(&quot;scrollArea&quot;).offsetHeight;</pre>
+
+
+
+<h2>Step 3: Calculating the height of the scroller (scrollH)</h2>
+<p>Now, fundamentally it's all about ratios.&nbsp; The ratio of the container
+to the content div is the same as the ratio of the scroller and the scroll
+area.&nbsp; We use ratios for positioning of the content div and also for
+calculating the height of the scroller.&nbsp; So:</p>
+<p><code>(content height) / (container height) = (scroll area height) / (scroll bar height)</code></p>
+<p>from this we can calculate scrollH:</p>
+<pre>var scrollH = (contH * scrollAreaH) /docH;
+if(scrollH &lt; 15) scrollH = 15;
+document.getElementById(&quot;scroller&quot;).style.height = Math.round(scrollH) + &quot;px&quot;;</pre>
+<p>Note that we are giving the scroller a minimum size, this is to make sure it
+is big enough to use.</p>
+
+
+
+<h2>Step 4: Dragging the scrollbar</h2>
+<p>Since this is not a drag and drop tutorial we'll be using <a href="http://www.youngpup.net" class="external">Youngpup's</a>
+ <a href="http://www.youngpup.net/?request=/components/dom-drag.xml" class="external">domDrag</a> object.&nbsp; If you are
+using your own drag script or someone else's, the underlying principle is the
+same.&nbsp; As the scroller is dragged you limit its position and monitor its y position.</p>
+<p>For Youngpup's drag object we make the scrollbar draggable using the
+following code:</p>
+<pre>var s = document.getElementById(&quot;scroller&quot;);
+scrollDist = Math.round(scroller.scrollAreaH - scroller.scrollH);
+Drag.init(s,null,0,0,0,scrollDist);</pre>
+<p>This also limits the horizontal and vertical movement of the dragged
+object.&nbsp; But we now need to create an ondrag function for the scroller:</p>
+<pre>s.onDrag = function (x,y) {
+  // insert scrollbar code
+}</pre>
+<p>At this point we should have a scrollbar that looks and feels like it's
+working.&nbsp; All that is left is to make so that dragging the scrollbar
+actually scrolls the
+content.</p>
+
+
+<h2>Step 5: Positioning the content</h2>
+<p>Now, to position the content we go back to the ratios:</p>
+<p><code>(scroller top) / (scroll area height) = (0 - content top) / (content height - container height)</code></p>
+<p>Since we want &quot;content top&quot;, we can rearrange this to get:</p>
+<pre>var scrollY = parseInt(s.style.top);
+scrollDist = Math.round(scroller.scrollAreaH - scroller.scrollH)
+var docY = 0 - (scrollY * (docH - contH) / scrollDist)</pre>
+<p>And then set its position using:</p>
+<pre>document.getElementById(&quot;content&quot;).style.top = docY + &quot;px&quot;;</pre>
+<p>This code goes inside ondrag like so:</p>
+<pre>s.onDrag = function (x,y) {
+  var scrollY = parseInt(s.style.top);
+  var docY = 0 - (scrollY * (docH - contH) / scrollDist)
+  document.getElementById(&quot;content&quot;).style.top = docY + &quot;px&quot;;
+}</pre>
+
+
+<h2>Step 6: End</h2>
+<p>So that's it.&nbsp; You should now have a basic scrollbar that looks
+something like <a href="example.htm">this</a>.&nbsp;
+From this it should be relatively straight forward to add up/down buttons (if
+appropriate) and style it to your liking.</p>
