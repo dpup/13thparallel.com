@@ -7,7 +7,7 @@
 	<div class="storycontent">
 		<p>Two new articles have been published over at <a href="http://www.alistapart.com/issues/204">A List Apart</a> on producing column based layouts.  If you remember the original 13thParallel, Michael and I developed a script that would break up a body of text into N-columns of a fixed height, this is subtely different from how the <span class="caps">CSS</span> based methods in the <span class="caps">ALA</span> articles work.</p>
 
-	<p>A lot of people are coming here via <span class="caps">ALA</span> directly to the column script article, but it is worthwhile checking out <a href="http://13thparallel.org/archive/interface/">the original interface we developed</a>.</p>	</div>
+	<p>A lot of people are coming here via <span class="caps">ALA</span> directly to the column script article, but it is worthwhile checking out <a href="/archive/interface/">the original interface we developed</a>.</p>	</div>
 	
 	<div class="meta">
 		Posted By Daniel Pupius<!-- @ 10:10--> <br />

@@ -1,7 +1,7 @@
 [Unit]
 Description=13thparallel.com announce
-BindsTo=13tparallel.service
-After=13tparallel.service
+BindsTo=13thparallel.service
+After=13thparallel.service
 
 [Service]
 User=core
@@ -10,11 +10,13 @@ RemainAfterExit=yes
 
 ExecStart=/bin/sh -c "while true; \
   do \
-  /bin/etcdctl set --ttl 60 /vulcand/upstreams/13tparallel/endpoints/13tparallel.service http://$COREOS_PRIVATE_IPV4:5008; \
+  /bin/etcdctl set --ttl 60 /vulcand/upstreams/13thparallel/endpoints/13thparallel.service http://$COREOS_PRIVATE_IPV4:5008; \
   /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.com/locations/home/path '/.*'; \
-  /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.com/locations/home/upstream 13tparallel; \
+  /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.com/locations/home/upstream 13thparallel; \
   /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.net/locations/home/path '/.*'; \
-  /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.net/locations/home/upstream 13tparallel; \
+  /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.net/locations/home/upstream 13thparallel; \
+  /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.org/locations/home/path '/.*'; \
+  /bin/etcdctl set --ttl 60 /vulcand/hosts/13thparallel.org/locations/home/upstream 13thparallel; \
   echo 13thparallel.com running at http://$COREOS_PRIVATE_IPV4:5008 and registered with etcd; \
   sleep 45; done;"
 
