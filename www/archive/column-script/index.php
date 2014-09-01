@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Column Script</h1>
 <p class="author">By Michael van Ouwerkerk</p>
 
@@ -71,3 +73,4 @@ things inside like a basic html parser and a number of array prototype functions
 There are plenty of comments in the code, so go ahead and see what you can learn 
 from it. One last thing: the <a href="lib_columns.js">lib_columns.js</a> file.
 </p>
+<? include('/var/www/site/foot.php') ?>

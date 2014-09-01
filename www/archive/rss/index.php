@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>PHP RSS 1.0 Parser</h1>
 <p class="author">By Daniel Pupius, June 2002</p>
 
@@ -109,3 +111,4 @@ and make it better.&nbsp; There are also plans for an ASP version.</p>
 useful, standards-compliant tool for managing your own information.&nbsp; For
 example, an RSS file would be the perfect way to store descriptions of your
 photos.</p>
+<? include('/var/www/site/foot.php') ?>

@@ -402,3 +402,4 @@ has been scrolled and an adjustment is made if necessary.
 
 </body>
 </html>
+<? include('/var/www/site/foot.php') ?>

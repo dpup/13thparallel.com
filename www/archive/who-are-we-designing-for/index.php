@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Who are we designing for?</h1>
 <p class="author">By Daniel Pupius, March 2002</p>
 
@@ -403,3 +405,5 @@ access the internet.</p>
   </tr>
 </table>
 <p>(Oftel)</p>
+
+<? include('/var/www/site/foot.php') ?>

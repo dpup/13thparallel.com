@@ -1,3 +1,4 @@
+<? include('/var/www/site/head.php') ?>
 
 <h1>Designing for standards: Separating structure, style and behaviour</h1>
 <p class="author">By Daniel Pupius, February 2002</p>
@@ -268,3 +269,4 @@ I asked Aaron something like this: &#8216;What of dynamic xhtml, what do I need 
 and he gave me a surprising reply in <a href="http://dhtmlcentral.com/forums/topic.asp?whichpage=2&amp;Forum_Title=General+DHTML+issues&amp;Topic_Title=Using+Toms+API+with+Gecko+And+DTD+%3F&amp;CAT_ID=1&amp;FORUM_ID=6&amp;TOPIC_ID=2761" class="external">this thread</a> on DHTMLCentral. 
 This is what got me thinking in earnest about these principles, and some weeks later I applied them in skriptlab v3.)
 </p>
+<? include('/var/www/site/foot.php') ?>

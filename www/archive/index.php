@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Archive</h1>
 
 <ul id="list">
@@ -71,3 +73,4 @@
 
 // ]]>
 </script>
+<? include('/var/www/site/foot.php') ?>

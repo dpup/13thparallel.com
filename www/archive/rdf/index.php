@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>An Introduction to the Resource Description Framework (RDF)</h1>
 <p class="author">By Daniel Pupius, June 2002</p>
 
@@ -237,3 +239,4 @@ easier place to navigate and share information.</p>
 <a href="http://groups.yahoo.com/group/rss-dev/files/namespace.html">RDF Site Summary 1.0</a><br />
 <a href="http://www.oreillynet.com/rss/">RSS Dev Center</a>
 </p>
+<? include('/var/www/site/foot.php') ?>

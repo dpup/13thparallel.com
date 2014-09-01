@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <script type="text/javascript">
 	// <![CDATA[
 	function stopSpam(alias,domain) {
@@ -310,3 +312,4 @@ more Mbps.</b></p>
 II...&#8221;</p>
 <p><b>Thank you very much indeed for your time. &nbsp;It&#8217;s been a great learning
 experience.</b></p>
+<? include('/var/www/site/foot.php') ?>

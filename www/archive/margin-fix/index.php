@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Internet Explorer Margin Fix</h1>
 <p class="author">By David Schontzler, April 2002</p>
 
@@ -113,3 +115,4 @@ type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</pre>
 <p>May be freely distributed under the <a href="http://www.fsf.org/copyleft/gpl.html" class="external">GNU General Public License</a>.</p>
 
 <p>Permanent URL: <a href="http://www.stilleye.com/scripts/marginfix" class="external">http://www.stilleye.com/scripts/marginfix</a>.</p>
+<? include('/var/www/site/foot.php') ?>

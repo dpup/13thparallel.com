@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>The Viewport</h1>
 
 <p>The area of your window where the contents are shown is called the viewport. 
@@ -279,3 +281,5 @@ shows a div element bouncing between the left edge of the viewport and the right
 Every time the position of the div is updated, there is a check to see if the document 
 has been scrolled and an adjustment is made if necessary.
 </p>
+
+<? include('/var/www/site/foot.php') ?>

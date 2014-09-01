@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>About</h1>
 <p>
   Thirteenth Parallel was an early attempt at a DHTML e-zine, covering technology,
@@ -27,3 +29,4 @@
 
 <h3>Alex Russel</h3>
 <p><a href="http://alex.dojotoolkit.org" class="external">http://alex.dojotoolkit.org</a></p>
+<? include('/var/www/site/foot.php') ?>

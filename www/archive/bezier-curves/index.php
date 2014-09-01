@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Bezi&eacute;r curves and JavaScript</h1>
 <p class="author">By Daniel Pupius, January 2002</p>
 
@@ -157,3 +159,4 @@ and use of Bezi&eacute;r curves.&nbsp;<br />
 <a href="http://www.gamedev.net/reference/articles/article888.asp" class="external">Unraveling Bezi&eacute;r Splines</a> by Justin Reynen (<a href="http://www.gamedev.net/" class="external">Gamedev.net</a>)<br />
 <a href="http://www.cee.hw.ac.uk/~ian/hyper00/curvesurf/bezier.html" class="external">Bezi&eacute;r Curves</a> and
 <a href="http://www.cee.hw.ac.uk/~ian/hyper00/curvesurf/morebez.html" class="external">More on Bezi&eacute;r Curves</a> by Ian E. Aitchison</p>
+<? include('/var/www/site/foot.php') ?>

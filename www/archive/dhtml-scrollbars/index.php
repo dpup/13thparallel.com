@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Custom DHTML Scrollbars</h1>
 <p class="author">By Daniel Pupius, June 2002</p>
 
@@ -105,3 +107,4 @@ var docY = 0 - (scrollY * (docH - contH) / scrollDist)</pre>
 something like <a href="example.htm">this</a>.&nbsp;
 From this it should be relatively straight forward to add up/down buttons (if
 appropriate) and style it to your liking.</p>
+<? include('/var/www/site/foot.php') ?>

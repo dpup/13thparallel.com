@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Mathematics &amp; DHTML</h1>
 <p>By Daniel Pupius, February 2002</p>
 
@@ -259,3 +261,4 @@ calculate the acceleration)<br />-->
 <a href="example11.htm">Example 11</a> - lots of little particles succumbing to friction<br />
 <a href="example12.htm">Example 12</a> - complex example showing particles being &#8220;fired&#8221; into a denser medium so that friction increases and gravity decreases</p>
 
+<? include('/var/www/site/foot.php') ?>

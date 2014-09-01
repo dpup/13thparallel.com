@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Coding For Portability, Part 2</h1>
 <p class="author">By Tom Trenka, April 2002</p>
 
@@ -64,3 +66,4 @@
 so that the next time you begin an application, instead of coding everything from scratch, you&#8217;ll be able to say &#8220;wait a minute...I already wrote a method that handles this!&#8221;-
 copy it directly into your code, and call it good.  Without a rewrite.</p>
 <p>Next month, I will talk a little more about the n-Tier architecture - in the context of a full-blown API library.  Good things come to those who wait...</p>
+<? include('/var/www/site/foot.php') ?>

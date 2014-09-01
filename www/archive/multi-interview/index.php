@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Multi-interview</h1>
 <p class="author">March 2002</p>
 
@@ -230,3 +232,4 @@ approaches to the problems that the standards are intended to solve.&quot;</p>
 <p><b>Adam:</b><br />
 &quot;Keep an eye out for the upcoming issues of <a href="http://www.untitled.nu" class="external">untitled.nu</a>,
 in which I'll have a 2 minute animation.&quot;</p>
+<? include('/var/www/site/foot.php') ?>

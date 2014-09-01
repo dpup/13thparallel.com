@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Scott Andrew (profile &amp; interview)</h1>
 <p class="author">January 2002</p>
 
@@ -204,3 +206,4 @@ HTML and CSS, the less time you&#8217;ll spend debugging a broken DHTML script.<
 <p>[Answer in the post]</p>
 
 <p><strong>Ok, Scott thanks ever so much for your time.</strong></p>
+<? include('/var/www/site/foot.php') ?>

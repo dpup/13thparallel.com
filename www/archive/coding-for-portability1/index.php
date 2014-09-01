@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Coding For Portability, Part 1</h1>
 <p class="author">By Tom Trenka, March 2002</p>
 
@@ -252,3 +254,4 @@ robust OOP through careful understanding of variable scope and object handling.
 So, for all of you API wanna-bees out there, I have one piece of
 advice - <strong>use the namespacing</strong>! (I'm gettin' tired of rewriting all of your code... ;D )</p>
 <p>Well, I'm pressed for time, so that's all for now....tune in next month as.... ;)</p>
+<? include('/var/www/site/foot.php') ?>

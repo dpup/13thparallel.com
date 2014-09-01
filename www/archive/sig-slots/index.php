@@ -1,3 +1,5 @@
+<? include('/var/www/site/head.php') ?>
+
 <h1>Advanced JavaScript events with <br />Signals and Slots</h1>
 <p class="author">By Alex Russell, July 2002</p>
 
@@ -217,3 +219,4 @@ this article, please don&#8217;t hesitate to contact the author
 Inc</a>. Alex is the tech lead for the netWindows
 DHTML API project. His weblog is at <a href="http://alex.netWindows.org" class="external">alex.netWindows.org</a> and he can be
 reached via email at <a href="mailto:alex@netWindows.org">alex@netWindows.org</a>.</p>
+<? include('/var/www/site/foot.php') ?>
