@@ -8,7 +8,7 @@
   Rights:       Copyright (c)2002-2005 Daniel Pupius
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
-  
+
 <!-- Mirrored from 13thparallel.com/archive/seperating-structure/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:22 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
@@ -26,9 +26,9 @@
 
     <div id="menu">
       <ul>
-        <li><a href="../../blog/index.html">Home</a></li>
-        <li><a href="../index.html" class="active">Archive</a></li>
-        <li><a href="../../about/index.html">About</a></li>
+        <li><a href="../../blog/">Home</a></li>
+        <li><a href="../" class="active">Archive</a></li>
+        <li><a href="../../about/">About</a></li>
       </ul>
     </div>
 
@@ -77,11 +77,11 @@ machine-readable, allowing software to infer what the page is about - this is
 now one of the ambitions for the eXtensible Mark-up Language (XML) as the use of
 HTML has been corrupted over time.</p>
 <p>As technologies are added to &#8220;improve&#8221; the interactivity and
-appearance of the web, they create new layers that wrap around the existing core. If a user-agent, 
-perhaps your telephone or electronic wallet, does not understand a particular 
-level of technology it just ignores it (in theory at least!). Now, advanced 
-documents can be written in such a way that even when one of these layers is 
-removed, the document remains meaningful because the core content is understood 
+appearance of the web, they create new layers that wrap around the existing core. If a user-agent,
+perhaps your telephone or electronic wallet, does not understand a particular
+level of technology it just ignores it (in theory at least!). Now, advanced
+documents can be written in such a way that even when one of these layers is
+removed, the document remains meaningful because the core content is understood
 by all user agents. </p>
 <p>So, how do we do this?</p>
 
@@ -149,8 +149,8 @@ you decide to add dynamic components to your site.</p>
 
 <h2>Step 3: define the appearance, a.k.a. Style</h2>
 <p>If we are going to add some dynamic behaviour later on we need to create two
-style-sheets. Firstly we need a &#8220;basic&#8221; style-sheet for general layout and styling. 
-Then if we would decide to add a script that needs specific styling we can add a &#8220;complex&#8221; 
+style-sheets. Firstly we need a &#8220;basic&#8221; style-sheet for general layout and styling.
+Then if we would decide to add a script that needs specific styling we can add a &#8220;complex&#8221;
 style-sheet that prepares the html elements that will be used by the script.</p>
 <p> We include them as follows:</p>
 <pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;<br />href=&quot;style/basic.css&quot;&gt;
@@ -164,7 +164,7 @@ style-sheet that prepares the html elements that will be used by the script.</p>
  link.type = "text/css";
  link.href = "style/complex.css";
  var head =
- document.getElementsByTagName('head')[0];	
+ document.getElementsByTagName('head')[0];
  head.appendChild(link);
 }</pre>
 
@@ -190,7 +190,7 @@ and style.</p>
 <p>It is necessary to block out browsers that aren&#8217;t compatible with your code.
 In the Thirteenth Parallel site we have a function that initiates all the
 dynamic behaviour, at the top we have the following code:<br />
-(note that long lines of code have been wrapped to fit our layout. 
+(note that long lines of code have been wrapped to fit our layout.
 where that happens, these line wraps are marked &#187;&#187;)
 </p>
 <pre>if (!document.getElementById
@@ -235,7 +235,7 @@ Open some page&lt;/a&gt;</pre>
 <p>What would happen if a browser that didn&#8217;t have JavaScript enabled tried to
 follow this link? It&#8217;d fall over. The following code is much better:</p>
 
-<pre>&lt;a href=&quot;somepage.htm&quot; 
+<pre>&lt;a href=&quot;somepage.htm&quot;
 onclick=&quot;return doPopup('somepage.htm');&quot;&gt;
 Open some page&lt;/a&gt;</pre>
 
@@ -298,9 +298,9 @@ JavaScript reference</a>
 character codes</a><br />
 <a href="http://www.thenoodleincident.com/tutorials/design_rant/" class="external">Owen Briggs&#8217; Design Rant</a> (what started me (us) thinking about this)<br />
 <br />
-(note from Micha&euml;l: Actually, Owen&#8217;s article is awesome but a long time before it became famous, 
-I asked Aaron something like this: &#8216;What of dynamic xhtml, what do I need to know to start using it?&#8217; 
-and he gave me a surprising reply in <a href="http://dhtmlcentral.com/forums/topic.asp?whichpage=2&amp;Forum_Title=General+DHTML+issues&amp;Topic_Title=Using+Toms+API+with+Gecko+And+DTD+%3F&amp;CAT_ID=1&amp;FORUM_ID=6&amp;TOPIC_ID=2761" class="external">this thread</a> on DHTMLCentral. 
+(note from Micha&euml;l: Actually, Owen&#8217;s article is awesome but a long time before it became famous,
+I asked Aaron something like this: &#8216;What of dynamic xhtml, what do I need to know to start using it?&#8217;
+and he gave me a surprising reply in <a href="http://dhtmlcentral.com/forums/topic.asp?whichpage=2&amp;Forum_Title=General+DHTML+issues&amp;Topic_Title=Using+Toms+API+with+Gecko+And+DTD+%3F&amp;CAT_ID=1&amp;FORUM_ID=6&amp;TOPIC_ID=2761" class="external">this thread</a> on DHTMLCentral.
 This is what got me thinking in earnest about these principles, and some weeks later I applied them in skriptlab v3.)
 </p>
 

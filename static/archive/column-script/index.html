@@ -8,7 +8,7 @@
   Rights:       Copyright (c)2002-2005 Daniel Pupius
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
-  
+
 <!-- Mirrored from 13thparallel.com/archive/column-script/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:21 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
@@ -26,9 +26,9 @@
 
     <div id="menu">
       <ul>
-        <li><a href="../../blog/index.html">Home</a></li>
-        <li><a href="../index.html" class="active">Archive</a></li>
-        <li><a href="../../about/index.html">About</a></li>
+        <li><a href="../../blog/">Home</a></li>
+        <li><a href="../" class="active">Archive</a></li>
+        <li><a href="../../about/">About</a></li>
       </ul>
     </div>
 
@@ -37,19 +37,19 @@
 <h1>Column Script</h1>
 <p class="author">By Michael van Ouwerkerk</p>
 
-<p>The column script can be used to split an amount of text or html into an array 
-of fragments that fit in the desired width and height. The effect is that you can now 
-let your text flow from one column into the next, as if you were laying out an article 
+<p>The column script can be used to split an amount of text or html into an array
+of fragments that fit in the desired width and height. The effect is that you can now
+let your text flow from one column into the next, as if you were laying out an article
 for a newspaper or magazine.
 </p>
 
-<p>Dan first came up with the crazy proto version of this script, I took it from there 
+<p>Dan first came up with the crazy proto version of this script, I took it from there
 to the most incredibly glorious and ravenous computing engine it is now.
 </p>
 
 <h2>Using the column script</h2>
 
-<p>To use the column script, all you need to do is include the script on the page, 
+<p>To use the column script, all you need to do is include the script on the page,
 and add this div, which is used by the script:<br />
 <br />
 <code>&lt;div id="divSizer"&gt;&lt;/div&gt;</code><br />
@@ -58,53 +58,53 @@ Then you can call the splitText method with three arguments:<br />
 <br />
 <code>Columns.splitText(text, width, height)</code><br />
 <br />
-The <code>width</code> and <code>height</code> arguments specify the maximum size 
-the blocks of text may have. The <code>text</code> argument is the string of text 
+The <code>width</code> and <code>height</code> arguments specify the maximum size
+the blocks of text may have. The <code>text</code> argument is the string of text
 or html that you wish to split.
 </p>
 
-<p>If you wish to use html strings, it&#8217;s recommended to use validated 
-<strong>xhtml</strong> with correctly nested and closed tags. The unclosed tags 
-that were legal in html 4.01 could wreak havoc on your pages. (if you&#8217;re not 
-sure how to get started with xhtml, check out the introduction to using xhtml in 
-the <a href="http://www.nypl.org/styleguide/" class="external">styleguide</a> of the 
+<p>If you wish to use html strings, it&#8217;s recommended to use validated
+<strong>xhtml</strong> with correctly nested and closed tags. The unclosed tags
+that were legal in html 4.01 could wreak havoc on your pages. (if you&#8217;re not
+sure how to get started with xhtml, check out the introduction to using xhtml in
+the <a href="http://www.nypl.org/styleguide/" class="external">styleguide</a> of the
 New York Public Library)
 </p>
 
-<p>The splitText method then returns an array that contains the snugly fitting strings 
-of text. If the browser does not support <code>document.getElementById</code> or 
-<code>innerHTML</code> or cannot find divSizer, the splitText method will return 
+<p>The splitText method then returns an array that contains the snugly fitting strings
+of text. If the browser does not support <code>document.getElementById</code> or
+<code>innerHTML</code> or cannot find divSizer, the splitText method will return
 <code>null</code>.<br />
 <br />
-<a href="example1.html">Example 
-1</a>: shows how to use the splitText method, and a simple way of using the array 
+<a href="example1.html">Example
+1</a>: shows how to use the splitText method, and a simple way of using the array
 returned by splitText. The text in the example was taken from the w3c CSS2 specification.
 </p>
 
 
 <h2>Extra features</h2>
 
-<p>There is one extra thing you can do with this script. As you may have noticed on 
-this site, in not every column the text runs all the way to the bottom. That&#8217;s 
-because we&#8217;ve used a tag with a specific class that is automatically recognized 
-and removed by the script. By including the following <code>span</code> tag in the 
+<p>There is one extra thing you can do with this script. As you may have noticed on
+this site, in not every column the text runs all the way to the bottom. That&#8217;s
+because we&#8217;ve used a tag with a specific class that is automatically recognized
+and removed by the script. By including the following <code>span</code> tag in the
 text, you can force content following it to continue in the next column:<br />
 <br />
 <code>&lt;span class="colbreak"&gt;&lt;/span&gt;</code><br />
 <br />
-The colbreak class does not need to have any associated stylerules in a stylesheet, 
-but we have given it absolute positioning and made it invisible. This was done to 
-ensure the tag interferes as little as possible with the text, even when a browser 
-has to display the unscripted version of the same document. 
+The colbreak class does not need to have any associated stylerules in a stylesheet,
+but we have given it absolute positioning and made it invisible. This was done to
+ensure the tag interferes as little as possible with the text, even when a browser
+has to display the unscripted version of the same document.
 </p>
 
 
 <h2>Conclusion</h2>
 
-<p>Since this is a component article and not a tutorial, I won&#8217;t tell you much 
-more about how the script works internally. However, there are some interesting 
-things inside like a basic html parser and a number of array prototype functions. 
-There are plenty of comments in the code, so go ahead and see what you can learn 
+<p>Since this is a component article and not a tutorial, I won&#8217;t tell you much
+more about how the script works internally. However, there are some interesting
+things inside like a basic html parser and a number of array prototype functions.
+There are plenty of comments in the code, so go ahead and see what you can learn
 from it. One last thing: the <a href="lib_columns.js">lib_columns.js</a> file.
 </p>
 

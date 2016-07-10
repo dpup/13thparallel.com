@@ -8,7 +8,7 @@
   Rights:       Copyright (c)2002-2005 Daniel Pupius
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
-  
+
 <!-- Mirrored from 13thparallel.com/archive/coding-for-portability1/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:21 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
@@ -26,9 +26,9 @@
 
     <div id="menu">
       <ul>
-        <li><a href="../../blog/index.html">Home</a></li>
-        <li><a href="../index.html" class="active">Archive</a></li>
-        <li><a href="../../about/index.html">About</a></li>
+        <li><a href="../../blog/">Home</a></li>
+        <li><a href="../" class="active">Archive</a></li>
+        <li><a href="../../about/">About</a></li>
       </ul>
     </div>
 
@@ -38,63 +38,63 @@
 <p class="author">By Tom Trenka, March 2002</p>
 
 <h2>Introduction</h2>
-<p>So...you've been playing around with DHTML for a while now, written your own 
-site using DHTML libraries that you've downloaded from the web, and now you're 
-thinking about writing your own.&nbsp; 
-You've looked at a lot of sources, and think you've got a good idea of what you 
+<p>So...you've been playing around with DHTML for a while now, written your own
+site using DHTML libraries that you've downloaded from the web, and now you're
+thinking about writing your own.&nbsp;
+You've looked at a lot of sources, and think you've got a good idea of what you
 want to do, how you're going to structure it, and more...</p>
-<p>So you happily start coding away.&nbsp; You write your own wrappers for the 
-DOM functions, create another browser detection script, create your own methods 
+<p>So you happily start coding away.&nbsp; You write your own wrappers for the
+DOM functions, create another browser detection script, create your own methods
 for animation, your own event handlers, blah blah blah ;).&nbsp;
-You've got it all together, you've debugged it as much as you can, and your site 
+You've got it all together, you've debugged it as much as you can, and your site
 is about to be launched.</p>
-<p>But wait!  Another DHTML dude has just released this widget that you think is 
+<p>But wait!  Another DHTML dude has just released this widget that you think is
 SO cool, you gotta have it!&nbsp;
-You grab the code, go to incorporate it into your site, and suddenly....everything 
+You grab the code, go to incorporate it into your site, and suddenly....everything
 breaks!&nbsp;
 What gives?</p>
 
 <h2>The problem with most DHTML APIs</h2>
 <p>You have just fallen victim to one of the biggest problems I see in JavaScript coding
-today - <strong>the lack of containment</strong>.&nbsp; There are a lot of great pieces of code 
-out there, but most of them fail to take into account the idea that someone might want 
+today - <strong>the lack of containment</strong>.&nbsp; There are a lot of great pieces of code
+out there, but most of them fail to take into account the idea that someone might want
 to use it, and have a hell of a time integrating it into their own libraries.&nbsp;
-Some APIs (such as the current incarnation of the DynAPI) try to handle it by insisting 
-that you use the DynAPI to do your work (as opposed to writing your own and making it 
-work side-by-side); some release their code to the public without ever thinking that 
+Some APIs (such as the current incarnation of the DynAPI) try to handle it by insisting
+that you use the DynAPI to do your work (as opposed to writing your own and making it
+work side-by-side); some release their code to the public without ever thinking that
 you might want to use it within your own framework, and more.</p>
 <p>There are several things that you can do to help avoid these situations.&nbsp;
 I'm going to talk about some of them; if you think of some that I've missed, let me
 know - you can post messages to the 13th Forums, which I read frequently :)</p>
-<p>But before I get into some of the techniques you can use to avoid "JS Conflict", let's 
-review some of the basics of the language first.  Those of you who know this already can 
+<p>But before I get into some of the techniques you can use to avoid "JS Conflict", let's
+review some of the basics of the language first.  Those of you who know this already can
 skip this part (but you might find out something you missed)...</p>
 
 <h2>Back to the Basics</h2>
 <h3>Variable Scope</h3>
-<p>To really understand why you can get code conflicts, you need to understand how 
+<p>To really understand why you can get code conflicts, you need to understand how
 scoping works in JavaScript.&nbsp;
-Scoping is a term used to describe the execution space in which a variable is defined 
+Scoping is a term used to describe the execution space in which a variable is defined
 and evaluated.  For instance, if we write a piece of code that looks like this:</p>
 <pre>&lt;script type=&quot;text/javascript&quot;&gt;
   var x = 0 ;
   var object = {
     x : 2 ,
     anotherObject : { x : 8 }
-  } ;  
+  } ;
 &lt;/script&gt;</pre>
-<p>You'll notice that the variable <strong>x</strong> appears three times: once in <em>global</em> 
-scope, once in the scope of the object <em>object</em>, and once in the scope of 
-<em>object.anotherObject</em>.  
-Although the variable is named the same thing, Javascript considers it to be three 
+<p>You'll notice that the variable <strong>x</strong> appears three times: once in <em>global</em>
+scope, once in the scope of the object <em>object</em>, and once in the scope of
+<em>object.anotherObject</em>.
+Although the variable is named the same thing, Javascript considers it to be three
 different variables.</p>
-<p>What is the global scope, then?  Well, the global scope is the main "sandbox" the 
-program is actually running in.  For most of you, this means the browser <strong>window</strong> 
+<p>What is the global scope, then?  Well, the global scope is the main "sandbox" the
+program is actually running in.  For most of you, this means the browser <strong>window</strong>
 object.</p>
-<p>This is <em>very</em> important to know.  Because almost everything in Javascript is 
+<p>This is <em>very</em> important to know.  Because almost everything in Javascript is
 an object (except for the simple data types, which themselves have object
-equivalents), <em>any time you create an object in JavaScript, it is added to the window 
-(global) scope</em>.  Including functions!  So if you turn around and write something 
+equivalents), <em>any time you create an object in JavaScript, it is added to the window
+(global) scope</em>.  Including functions!  So if you turn around and write something
 like this:</p>
 <pre>function myFunction() {
   return &quot;This is my function&quot; ;
@@ -103,19 +103,19 @@ like this:</p>
 <pre>function window.myFunction() {
   return &quot;This is my function&quot; ;
 }</pre>
-<p>Try it out. If you call myFunction(), or you call window.myFunction(), you will get 
+<p>Try it out. If you call myFunction(), or you call window.myFunction(), you will get
 the same results.  Isn't that handy to know!</p>
-<p>So, What's the problem then? Well, as far as I've seen, most of the DHTML code 
-available on the Web is written using the global namespace (which is somewhat a synonym 
-of scope).  This means that if you've written 500K of JavaScript, odds are you've 
-defined a <em>lot</em> of variables within the global namespace.  (Remember, every 
+<p>So, What's the problem then? Well, as far as I've seen, most of the DHTML code
+available on the Web is written using the global namespace (which is somewhat a synonym
+of scope).  This means that if you've written 500K of JavaScript, odds are you've
+defined a <em>lot</em> of variables within the global namespace.  (Remember, every
 time you create a function, you're creating a new variable!)</p>
 
 <h3>Emulating Class-based OOP</h3>
-<p>How do we get around this problem?  It turns out that JavaScript allows you to 
-create your own objects.  There are two ways of doing this: the first, and probably 
-the most commonly seen, is by using the <code>function</code> keyword in conjunction 
-with <code>this</code> and <code>prototype</code>:</p> 
+<p>How do we get around this problem?  It turns out that JavaScript allows you to
+create your own objects.  There are two ways of doing this: the first, and probably
+the most commonly seen, is by using the <code>function</code> keyword in conjunction
+with <code>this</code> and <code>prototype</code>:</p>
 <pre>function myClass(id,title) {
   this.id = id ;
   this.title = title ;
@@ -124,39 +124,39 @@ myClass.prototype.getId = function() {
   return this.id ;
 }
 ...etc...</pre>
-<p>What you are doing here is creating the JavaScript equivalent of a <strong><em>class</em></strong>.  
-I could use this function to return to my code a new <em>instance</em> of <code>myClass</code>, 
+<p>What you are doing here is creating the JavaScript equivalent of a <strong><em>class</em></strong>.
+I could use this function to return to my code a new <em>instance</em> of <code>myClass</code>,
 by using the <code>new</code> keyword:</p>
 <pre>var test = new myClass('test','This is a test');</pre>
-<p>which is great! Now I can use the power of Object-Oriented Programming by 
+<p>which is great! Now I can use the power of Object-Oriented Programming by
 modeling my "problems" using bonafide objects!</p>
 
 <h4>Class Modifiers in JavaScript</h4>
-<p>Wait a minute - in a strongly-typed language, we have object modifiers like 
+<p>Wait a minute - in a strongly-typed language, we have object modifiers like
 <code>public</code>,
-<code>private</code>, or <code>static</code>.  What do these words do, and what 
+<code>private</code>, or <code>static</code>.  What do these words do, and what
 do they mean?</p>
-<p>Each of these words define some sort of accessibility to the object in question. 
-<code>public</code> and <code>private</code> usually make the "class" definition either 
-available or not available to code outside of the containing scope.  So in true OOP, 
-if you're writing a class that you want the world to use, you would define it as 
-<code>public</code>; if you didn't want the world to see it, you'd define it as 
+<p>Each of these words define some sort of accessibility to the object in question.
+<code>public</code> and <code>private</code> usually make the "class" definition either
+available or not available to code outside of the containing scope.  So in true OOP,
+if you're writing a class that you want the world to use, you would define it as
+<code>public</code>; if you didn't want the world to see it, you'd define it as
 <code>private</code>.</p>
-<p>Unfortunately, <strong>all</strong> objects in JavaScript are considered <code>public</code>. 
-This means that no matter what you do, a smart user will always be able to access 
+<p>Unfortunately, <strong>all</strong> objects in JavaScript are considered <code>public</code>.
+This means that no matter what you do, a smart user will always be able to access
 any property or method you've defined in your API.</p>
 <p>That doesn't mean they <em>know</em> all the properties and methods, though....</p>
-<p>What about the <code>static</code> keyword?  In normal OOP, a <code>static</code> 
+<p>What about the <code>static</code> keyword?  In normal OOP, a <code>static</code>
 object is one that is
-instantiated immediately, and cannot be created through the use of the <code>new</code> 
+instantiated immediately, and cannot be created through the use of the <code>new</code>
 keyword.  This holds somewhat true for JavaScript, as
 well-although not in the true sense of the word.</p>
-<p>Two examples of static objects present in the core JavaScript language are the 
-<strong>Date</strong> and <strong>Math</strong> objects (the Date object is actually both static and public; 
+<p>Two examples of static objects present in the core JavaScript language are the
+<strong>Date</strong> and <strong>Math</strong> objects (the Date object is actually both static and public;
 you can instantiate new Dates, but you can also call static methods of the Date object).</p>
 
 <h4>More on Static Objects and Properties</h4>
-<p>How can this work for you?  You might have seen, in some of the examples out there, 
+<p>How can this work for you?  You might have seen, in some of the examples out there,
 code that looks like this:</p>
 <pre>function myClass(title) {
   this.id = 'myClass-' + <strong>myClass.Count++</strong> ;
@@ -167,27 +167,27 @@ myClass.prototype.getTitle = function() {
   return this.title;
 } ;
 ...etc...</pre>
-<p>The property <strong>Count</strong>, which is added directly to the <code>myClass</code> 
-object, is being created as a <em>static</em> property.  This means that even though 
-you might instantiate new <code>myClass</code> objects (which are in fact new Objects), 
-the <code>Count</code> property remains with the original object you've created 
-(which is <code>myClass</code>).  This property is only created once (as is the 
+<p>The property <strong>Count</strong>, which is added directly to the <code>myClass</code>
+object, is being created as a <em>static</em> property.  This means that even though
+you might instantiate new <code>myClass</code> objects (which are in fact new Objects),
+the <code>Count</code> property remains with the original object you've created
+(which is <code>myClass</code>).  This property is only created once (as is the
 object <code>myClass</code>), and so maintains a single
-integer - regardless of how many instances of <code>myClass</code> you create.  
+integer - regardless of how many instances of <code>myClass</code> you create.
 In this case, the <code>Count</code> property is considered <strong>static</strong>.</p>
-<p>(This technique is very handy for uniquely identifying instances of a particular 
+<p>(This technique is very handy for uniquely identifying instances of a particular
 class.)</p>
 <h3>Making Static "Classes"</h3>
-<p>Ok, back to the original point.  We've seen one way of creating objects, by 
-using <code>function</code>, <code>this</code>, and <code>prototype</code>.  
+<p>Ok, back to the original point.  We've seen one way of creating objects, by
+using <code>function</code>, <code>this</code>, and <code>prototype</code>.
 This method is handy for emulating a Class-based OOP structure.</p>
-<p>What if we only want one instance of an object, though?  It turns out there's 
+<p>What if we only want one instance of an object, though?  It turns out there's
 another way of creating objects.  This can be written in one of two ways:</p>
 <pre><em>Method One: C-Style syntax</em>
 var myObject = {
 	property : value ,
 	property : value ,
-	property : value 
+	property : value
 }
 
 <em>Method Two: using <strong>new</strong></em>
@@ -202,32 +202,32 @@ myObject['property'] = value ;
 
 ...etc...</pre>
 <p>Both methods result in the same thing, so which one you use is up to you.  My
- preference is the first method ;)...Notice the use of colons in place of the equal 
+ preference is the first method ;)...Notice the use of colons in place of the equal
  sign, and the use of commas in place of semi-colons...</p>
-<p>Although you can instantiate new versions of objects defined by this method, you 
-should only use this method of definition if you only want one instance of the object 
-in your code.  It is slightly more efficient, and helps to clarify your code for both 
+<p>Although you can instantiate new versions of objects defined by this method, you
+should only use this method of definition if you only want one instance of the object
+in your code.  It is slightly more efficient, and helps to clarify your code for both
 yourself and others.</p>
 
 
 <h2>Isolating your code through Namespaces</h2>
-<p>Now that we have the background, we can address the original problem: preventing 
-"JS Conflict" between your code and someone else's code.  To do this, we take more 
-hints from true OOP languages: we create a set of <strong>namespaces</strong>, and place our 
+<p>Now that we have the background, we can address the original problem: preventing
+"JS Conflict" between your code and someone else's code.  To do this, we take more
+hints from true OOP languages: we create a set of <strong>namespaces</strong>, and place our
 code inside of them.</p>
-<p>What's a namespace?  A namespace is a device used by more robust OOP languages that 
-sets up the scope of the objects within the namespace.  In other words, it is an additional 
-level of scoping.  For instance, in C# (the new .NET language), I could isolate my code 
+<p>What's a namespace?  A namespace is a device used by more robust OOP languages that
+sets up the scope of the objects within the namespace.  In other words, it is an additional
+level of scoping.  For instance, in C# (the new .NET language), I could isolate my code
 from all of the other code by writing something like this:</p>
 <pre>public namespace TomsCode {
 	public class myClass {
 		...put stuff here...
 	}
 }</pre>
-<p>Now, in order to get to <code>myClass</code>, I would have to qualify it using 
-the namespace <code>TomsCode</code>.  Without that qualification, the compiler doesn't 
+<p>Now, in order to get to <code>myClass</code>, I would have to qualify it using
+the namespace <code>TomsCode</code>.  Without that qualification, the compiler doesn't
 know what <code>myClass</code> means, and it barfs.</p>
-<p>In JavaScript, you can emulate this functionality by using static objects as 
+<p>In JavaScript, you can emulate this functionality by using static objects as
 namespaces.  For instance:</p>
 <pre>var TomsCode = {} ;
 TomsCode.myClass = function (title) {
@@ -238,21 +238,21 @@ TomsCode.myClass.Count = 0 ;
 TomsCode.myClass.prototype.getTitle=function(){
   return this.title ;
 } ;</pre>
-<p>Notice something else: I used dot notation within the function name itself.  
+<p>Notice something else: I used dot notation within the function name itself.
 This is perfectly legal in JavaScript, and you can go as far as you want with it!</p>
-<p>When creating a namespace, you should use the conventions that Sun put forth for 
-namespacing in Java:  start with your domain name (or something very similar), and 
+<p>When creating a namespace, you should use the conventions that Sun put forth for
+namespacing in Java:  start with your domain name (or something very similar), and
 go from there.  For instance:</p>
 <pre>var org = {} ;
 org.ThirteenthParallel = {} ;
 org.ThirteenthParallel.Columns = {} ;
 etc.</pre>
-<p>This way you are (almost) assured that your namespace is unique...and you get 
-(unless you're dealing with a very sharp coder) to keep credit of your library, 
+<p>This way you are (almost) assured that your namespace is unique...and you get
+(unless you're dealing with a very sharp coder) to keep credit of your library,
 which is becoming a big problem nowadays.</p>
-<p>What if your domain name is really long (see the above example)?  Well, I know 
-most of you DHTMLer are pretty lazy ;), so here's another factoid of JavaScript:  
-<em>all objects are passed by reference</em>.  So if you don't feel like typing the 
+<p>What if your domain name is really long (see the above example)?  Well, I know
+most of you DHTMLer are pretty lazy ;), so here's another factoid of JavaScript:
+<em>all objects are passed by reference</em>.  So if you don't feel like typing the
 full name all the time, you can simply assign an alias like this:</p>
 <pre>var org = {} ;
 org.ThirteenthParallel = {} ;
@@ -262,14 +262,14 @@ var _13th = org.ThirteenthParallel ;
 
 _13th.Columns = {} ;
 ...etc...</pre>
-<p>(This site's domain name presents a problem-it begins with a number, which is 
-not allowed as a variable name in JavaScript...we get around it by beginning 
+<p>(This site's domain name presents a problem-it begins with a number, which is
+not allowed as a variable name in JavaScript...we get around it by beginning
 with an underscore :)</p>
 
 <h3>Making sure the namespace exists</h3>
-<p>Last problem: your API is split into a number of different files.  How do 
+<p>Last problem: your API is split into a number of different files.  How do
 you know if the namespace has been created or not?</p>
-<p>This one is fairly easy: you test for it's existence in the beginning of 
+<p>This one is fairly easy: you test for it's existence in the beginning of
 each file, and if it doesn't exist, you create it:</p>
 <pre>if (!org) {
   var org = {} ;
@@ -282,9 +282,9 @@ each file, and if it doesn't exist, you create it:</p>
 <p>By the way, all of this would work in older versions of JavaScript too!</p>
 
 <h2>Conclusion?</h2>
-<p>I've introduced you to some of the basics of the JavaScript language, and 
-shown you how you can emulate some of the more powerful features of a truly 
-robust OOP through careful understanding of variable scope and object handling.  
+<p>I've introduced you to some of the basics of the JavaScript language, and
+shown you how you can emulate some of the more powerful features of a truly
+robust OOP through careful understanding of variable scope and object handling.
 So, for all of you API wanna-bees out there, I have one piece of
 advice - <strong>use the namespacing</strong>! (I'm gettin' tired of rewriting all of your code... ;D )</p>
 <p>Well, I'm pressed for time, so that's all for now....tune in next month as.... ;)</p>

@@ -8,7 +8,7 @@
   Rights:       Copyright (c)2002-2005 Daniel Pupius
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
-  
+
 <!-- Mirrored from 13thparallel.com/archive/bezier-curves/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:20 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
@@ -26,9 +26,9 @@
 
     <div id="menu">
       <ul>
-        <li><a href="../../blog/index.html">Home</a></li>
-        <li><a href="../index.html" class="active">Archive</a></li>
-        <li><a href="../../about/index.html">About</a></li>
+        <li><a href="../../blog/">Home</a></li>
+        <li><a href="../" class="active">Archive</a></li>
+        <li><a href="../../about/">About</a></li>
       </ul>
     </div>
 
@@ -68,7 +68,7 @@ And for a cubic (3rd order) curve we cube both sides:<br />
 &#187; 1 = (t + (1 - t)) . (t<sup>2</sup> + 2t(1 - t) + (1 - t)<sup>2</sup>)<br />
 &#187; 1 = t<sup>3</sup> + 3t<sup>2</sup>(1 - t) + 3t(1 - t)<sup>2</sup> + (1 - t)<sup>3</sup><br />
 <br />
-<img src="images/bezier.gif" width="122" height="170" alt="Bezier curve" class="right" />While it 
+<img src="images/bezier.gif" width="122" height="170" alt="Bezier curve" class="right" />While it
 is possible to simplify this equation more, for the purpose of this
 we want it in terms of t and (1 - t).&nbsp; You should also note the way we
 order the equation.<br />
@@ -130,7 +130,7 @@ Bezi&eacute;r curve using the following code:</p>
 <pre class="code">var pos = new coord();
 pos.x = C1.x * B1(0.5) + C2.x * B2(0.5) + C3.x * B3(0.5) + C4.x * B4(0.5);
 pos.y = C1.y * B1(0.5) + C2.y * B2(0.5) + C3.y * B3(0.5) + C4.y * B4(0.5);</pre>
-		
+
 
 <p>Putting this together we get the following function:</p>
 
@@ -177,7 +177,7 @@ effect (same method as used in the 13th API's timeSlide() function)<br />
 3</a>: Allows you to play with a
 Bezi&eacute;r curve.<br />
 <br />
-<a href="http://3dhtml.netzministerium.de/examples/beziercube3d.html" class="external">Example 4</a>: a bouncing 3d cube courtesy of the guys over at <a href="http://3dhtml.netzministerium.de/" class="external">Netzministerium</a>, uses their 3dhtml 
+<a href="http://3dhtml.netzministerium.de/examples/beziercube3d.html" class="external">Example 4</a>: a bouncing 3d cube courtesy of the guys over at <a href="http://3dhtml.netzministerium.de/" class="external">Netzministerium</a>, uses their 3dhtml
 API.
 </p>
 

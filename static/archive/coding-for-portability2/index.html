@@ -8,7 +8,7 @@
   Rights:       Copyright (c)2002-2005 Daniel Pupius
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
-  
+
 <!-- Mirrored from 13thparallel.com/archive/coding-for-portability2/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:21 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
@@ -26,9 +26,9 @@
 
     <div id="menu">
       <ul>
-        <li><a href="../../blog/index.html">Home</a></li>
-        <li><a href="../index.html" class="active">Archive</a></li>
-        <li><a href="../../about/index.html">About</a></li>
+        <li><a href="../../blog/">Home</a></li>
+        <li><a href="../" class="active">Archive</a></li>
+        <li><a href="../../about/">About</a></li>
       </ul>
     </div>
 
@@ -49,7 +49,7 @@
  - How does it accomplish its goals?<br />
  - What data does the application operate on, and with?<br />
  - How does the application communicate its action and interaction with the user?</p>
- 
+
 <p>These questions should be asked before anything else - if you haven&#8217;t defined the application, in full, before coding, you&#8217;re asking for trouble.  In my 5 years of experience as a programming professional (and 10 years before that as a hobby), I&#8217;ve seen and worked on a lot of different projects
 - some planned well, some not planned at all - and the results invariably were an accurate reflection of the amount (and quality) of planning that went into it.  At the high point of the dot-com boom, it was estimated that 50% to 65% of all IT projects failed, whether completely, by going over budget, or going over deadlines.  Almost always, these failures were due to poor planning. Remember: it is a LOT harder to code something that isn&#8217;t clearly defined.</p>
 <h2>Using reductive analysis</h2>
@@ -65,7 +65,7 @@
  - It is a proven concept.<br />
  - It describes a relationship.<br />
  - It has a significant human component.</p>
- 
+
 <p>Design patterns are a recurring phenomenon, and are usually subject to a rule of three; they can be identified in at least three separate systems within the same problem domain.</p>
 <p>When defining a design pattern solution, you should follow some of the suggestions put forth by Brad Appleton in his paper &#8220;Patterns and Software: Essential Concepts and Terminology&#8221; (still available at
 <a href="http://www.enteract.com/~bradapp/docs/patterns-intro.html" class="external">http://www.enteract.com/~bradapp/docs/patterns-intro.html</a>).  Some of these suggestions are:<br />
@@ -74,7 +74,7 @@
  3. &nbsp;<b>Context</b>.  The conditions under which the problem and solution seems to occur, and for which the solution is desirable.<br />
  4. &nbsp;<b>Forces</b>.  A description of all relevant forces and constraints, and how they interact and conflict with each other, with the goals to be achieved.<br />
  5. &nbsp;<b>Solution</b>.  A description of how to realize the desired outcome.</p>
- 
+
 <div>(Taken and paraphrased from &#8220;Analyzing Requirements and Defining Solution Architectures&#8221;, Microsoft Press)</div>
 <p>Why would we look for patterns?  In real world terms, the answer is simple: by nature, we programmers are lazy, and hate writing more code than we have to ;) ; no, the idea is to write code that is as reusable as possible.  </p>
 <p>Let&#8217;s take an example.  I&#8217;m sure some of you have run across a web site somewhere that preloads a number of images (say, 20), and the author defined twenty different variables, each of which goes through at least 3 statements to accomplish the preloading.  Image preloading would be a great candidate for a design pattern solution; instead of rewriting the same lines 20 times, you simply define a function, maybe something like this:</p>
