@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+
+<!-- Mirrored from 13thparallel.com/archive/interface/tutorial/2002.06.viewport.example3.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:47 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Viewport example 3</title>
+
+<style type="text/css">
+html {
+	margin:					0;
+	padding:				0;
+}
+body {
+	margin:					15px;
+	padding:				0;
+	font:					12px/15px verdana, sans-serif;
+	color:					#000;
+	background:				#fff;
+}
+a:link, a:visited {
+	color:					#666;
+	text-decoration:		underline;
+}
+a:focus, a:hover, a:active {
+	color:					#333;
+	text-decoration:		none;
+}
+#divTest {
+	position:				absolute;
+	padding:				3px;
+	width:					220px;
+	height:					20px;
+
+	font:					10px/12px verdana, sans-serif;
+	color:					#666;
+	background:				#DDE2E4;
+	visibility:				hidden;
+}
+</style>
+
+<script type="text/javascript">
+// <![CDATA[
+showIt = function() {
+	if( document.getElementById ) {
+		var setX = 195;
+		var setY = 150;
+		
+		var div = document.getElementById( "divTest" );
+		var divWidth = div.offsetWidth ? div.offsetWidth : div.style.width ? parseInt( div.style.width ) : 0;
+		var divHeight = div.offsetHeight ? div.offsetHeight :  div.style.height ? parseInt( div.style.height ) : 0;
+		
+		// Test if setX + the width of the div is greater than the viewport width.
+		// If it is bigger, an adjustment is made.
+		if( setX + divWidth > getViewportWidth() ) {
+			setX = getViewportWidth() - divWidth;
+		}
+		
+		// Test if setY + the height of the div is greater than the viewport height.
+		// If it is bigger, an adjustment is made.
+		if( setY + divHeight > getViewportHeight() ) {
+			setY = getViewportHeight() - divHeight;
+		}
+		
+		div.style.left = setX + "px";
+		div.style.top = setY + "px";
+		div.style.visibility = "visible";
+	}
+};
+
+hideIt = function() {
+	if( document.getElementById ) {
+		var div = document.getElementById( "divTest" );
+		div.style.visibility = "hidden";
+		div.style.left = 0 + "px";
+		div.style.top = 0 + "px";
+	}
+};
+
+getViewportWidth = function() {
+	var width = 0;
+	if( document.documentElement && document.documentElement.clientWidth ) {
+		width = document.documentElement.clientWidth;
+	}
+	else if( document.body && document.body.clientWidth ) {
+		width = document.body.clientWidth;
+	}
+	else if( window.innerWidth ) {
+		width = window.innerWidth - 18;
+	}
+	return width;
+};
+
+getViewportHeight = function() {
+	var height = 0;
+	if( document.documentElement && document.documentElement.clientHeight ) {
+		height = document.documentElement.clientHeight;
+	}
+	else if( document.body && document.body.clientHeight ) {
+		height = document.body.clientHeight;
+	}
+	else if( window.innerHeight ) {
+		height = window.innerHeight - 18;
+	}
+	return height;
+};
+// ]]>
+</script>
+
+</head>
+<body>
+
+<div id="divTest">(some very important content here)</div>
+<p><a href="#" onmouseover="showIt()" onmouseout="hideIt()">Move your mouse over here!</a></p>
+
+</body>
+
+<!-- Mirrored from 13thparallel.com/archive/interface/tutorial/2002.06.viewport.example3.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:47 GMT -->
+</html>

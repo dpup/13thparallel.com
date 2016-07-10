@@ -1,0 +1,46 @@
+/* column example one */
+
+html {
+	padding:	0px;
+	margin:		0px;
+}
+
+body {
+	padding:	15px;
+	margin:		0px;
+	font:		11px/15px tahoma, arial, helvetica, sans-serif;
+	color:		#999;
+	background:	#fff;
+}
+
+h1 {
+	margin:		0px 0px 14px 0px;
+	font:		bold 16px/18px garamond, serif;
+	color:		#999;
+}
+
+p {
+	margin:		0px 0px 14px 0px;
+	font:		11px/15px tahoma, arial, helvetica, sans-serif;
+	color:		#999;
+}
+
+#divSizer {
+	position:	absolute;
+	top:		0px;
+	left:		0px;
+	visibility:	hidden;
+}
+
+a {
+	color:			#666;
+	text-decoration:	underline;
+	outline:		none;
+}
+
+a:hover {
+	color:			#333;
+	text-decoration:	none;
+}
+
+/* end */

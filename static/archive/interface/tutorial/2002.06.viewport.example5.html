@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+
+<!-- Mirrored from 13thparallel.com/archive/interface/tutorial/2002.06.viewport.example5.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:47 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Viewport example 5</title>
+
+<style type="text/css">
+html {
+	margin:				0;
+	padding:			0;
+}
+body {
+	/* In IE5/Mac all offsetLeft and offsetTop values are calculated relative to the body element.
+	This is a problem, a bug, because elements are really positioned relative to the html element.
+	To make sure the offsetLeft and offsetTop values are correct, set the body margin to zero. */
+	margin:				0;
+	padding:			0;
+}
+#divSpacer {
+	width:				1000px;
+	height:				10px;
+}
+#divTest {
+	position:			absolute;
+	left:				0;
+	top:				110px;
+	width:				30px;
+	height:				30px;
+	color:				#000;
+	background:			#DDE2E4;
+}
+</style>
+
+<script type="text/javascript">
+// <![CDATA[
+var direction = "right";
+var increment = 7;
+bounce = function() {
+	if( document.getElementById ) {
+		var div = document.getElementById( "divTest" );
+		var divLeft = div.style.left ? parseInt( div.style.left ) : div.offsetLeft ? div.offsetLeft : 0;
+		if( direction == "right" ) {
+			
+			// Make setX the current position of the div plus the increment.
+			var setX = divLeft + increment;
+			
+			// If part of the div gets past the right edge of the viewport, then:
+			// - Make setX so that it places the div exactly at the edge of the viewport.
+			// - Change the direction of the animation to "left".
+			if( setX + div.offsetWidth > getViewportWidth() ) {
+				setX = getViewportWidth() - div.offsetWidth;
+				direction = "left";
+			}
+			
+			// Move the div.
+			div.style.left = setX + "px";
+		}
+		else if ( direction == "left" ) {
+			
+			// Make setX the current position of the div minus the increment.
+			var setX = divLeft - increment;
+			
+			// If part of the div gets past the left edge of the viewport, then:
+			// - Make setX so that it places the div exactly at the edge of the viewport.
+			// - Change the direction of the animation to "right".
+			if( setX < 0 ) {
+				setX = 0;
+				direction = "right";
+			}
+			
+			// Move the div.
+			div.style.left = setX + "px";
+		}
+		
+		setTimeout( "bounce()", 10 );
+	}
+}
+
+getViewportWidth = function() {
+	var width = 0;
+	if( document.documentElement && document.documentElement.clientWidth ) {
+		width = document.documentElement.clientWidth;
+	}
+	else if( document.body && document.body.clientWidth ) {
+		width = document.body.clientWidth;
+	}
+	else if( window.innerWidth ) {
+		width = window.innerWidth - 18;
+	}
+	return width;
+};
+
+window.onload = bounce;
+// ]]>
+</script>
+</head>
+<body>
+
+<div id="divSpacer"></div>
+<div id="divTest"></div>
+
+</body>
+
+<!-- Mirrored from 13thparallel.com/archive/interface/tutorial/2002.06.viewport.example5.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:47 GMT -->
+</html>

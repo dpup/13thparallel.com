@@ -1,0 +1,5 @@
+<div class="itemTitle">:: <a href="<?13r2a itemLink ?>"><?13r2a itemTitle ?></a> ::</div>
+<div class="itemText">
+  <?13r2a itemDescription ?>
+</div>
+<hr />

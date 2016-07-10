@@ -1,0 +1,45 @@
+<?xml version="1.0"?> 
+<!DOCTYPE rss PUBLIC "-//Netscape Communications//DTD RSS 0.91//EN" "http://my.netscape.com/publish/formats/rss-0.91.dtd">
+
+<rss version="0.91">
+  <channel>
+    <title>:: 13th Parallel: Issue : August 2002 ::</title>
+    <link>http://13thparallel.org/</link>
+    <description>This month at 13thParallel:  </description>
+    <language>en-uk</language>
+    <pubDate>2002-08-30</pubDate>
+    <managingEditor>Daniel Pupius (mailto: rss@13thparallel.org)</managingEditor>
+
+    <image>
+      <title>13th Parallel</title>
+      <url>http://13thparallel.org/metadata/small_logo.gif</url>
+      <link>http://13thparallel.org/</link>
+      <description>13th Parallel</description>
+    </image>
+
+    <item>
+      <title>About</title>
+      <description>Information on 13th Parallel and the people behind it.</description>
+      <link>http://13thparallel.org/?issue=;title=about</link>
+    </item>
+
+    <item>
+      <title>News</title>
+      <description>General information about 13th Parallel, cool new sites and industry related news.</description>
+      <link>http://13thparallel.org/?issue=;title=news</link>
+    </item>
+
+    <item>
+      <title>Archive</title>
+      <description>Allows you to browse through past issues of 13th Parallel.</description>
+      <link>http://13thparallel.org/?issue=;title=archive</link>
+    </item>
+
+    <item>
+      <title>Links</title>
+      <description>A selection of cool links.</description>
+      <link>http://13thparallel.org/?issue=;title=links</link>
+    </item>
+
+ </channel>
+</rss>

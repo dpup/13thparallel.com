@@ -1,0 +1,90 @@
+/* 13thparallel print stylesheet */
+
+.colbreak, .scripted {
+	display:			none;
+}
+
+html {
+	margin:				0;
+	padding:			0;
+}
+
+body {
+	margin:				0;
+	padding:			0;
+	color:				#000;
+	background:			#fff;
+}
+
+#divLogo {
+	text-align:			right;
+}
+
+#divSiteContents {
+	height:				14px;
+	font:				bold 11px helvetica, sans-serif;
+	width:				100%;
+	text-align:			right;
+	text-transform:		capitalize;
+}
+
+#divIssueContents {
+	height:				14px;
+	font:				bold 11px helvetica, sans-serif;
+	text-align:			right;
+	text-transform:		capitalize;
+}
+
+#divContent, .columntext {
+	margin:				0 3em;
+	font:				12px/120% helvetica, sans-serif;
+}
+
+.columntext h1 {
+	font:				bold 160%/112% helvetica, sans-serif;
+	margin:				0 0 0.3em 0;
+	page-break-after:	avoid;
+}
+
+.columntext h2 {
+	font:				bold 130%/130% helvetica, sans-serif;
+	margin:				0.9em 0 0.1em 0;
+	page-break-after:	avoid;
+}
+
+.columntext h3 {
+	font:				bold 120%/140% helvetica, sans-serif;
+	margin:				0 0 0.1em 0;
+	page-break-after:	avoid;
+}
+
+.columntext h4 {
+	font:				500 120%/140% helvetica, sans-serif;
+	margin:				1em 0 0.1em 0;
+	font-variant:		small-caps;
+}
+
+p {
+	margin-top:			0;
+}
+
+pre {
+	font:				11px/120% "courier new", monospace;
+	page-break-inside: 	avoid;
+}
+
+b, strong {
+	font-weight:		bold;
+}
+
+i, em {
+	font-style:			italic;
+}
+
+a {
+	color:				#333;
+	text-decoration:	underline;
+	outline:			none;
+}
+
+/* end */

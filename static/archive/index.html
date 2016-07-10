@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!--
+  Title:        Thirteenth Parallel (Archive / Temp Site)
+  Description:  Interface for the temporary site put up to hold 13th's old content
+
+  Creator:      Dan Pupius <http://pupius.co.uk>
+  Date:         2005-01-14
+  Rights:       Copyright (c)2002-2005 Daniel Pupius
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<!-- Mirrored from 13thparallel.com/archive/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Thirteenth Parallel</title>
+    <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+    <meta name="copyright" content="Copyright (c)2002-2005 Thirteenth Parallel, All Rights Reserved" />
+    <link rel="stylesheet" type="text/css" href="../styles/13.css" />
+    <script type="text/javascript" src="../js/Toolkit.js"></script>
+    <script type="text/javascript" src="../js/Toolkit.Events.js"></script>
+    <script type="text/javascript" src="../js/stuff.js"></script>
+  </head>
+
+  <body>
+    <p id="title"><em>Thirteenth Parallel /archive/</em></p>
+
+    <div id="menu">
+      <ul>
+        <li><a href="../blog/index.html">Home</a></li>
+        <li><a href="index.html" class="active">Archive</a></li>
+        <li><a href="../about/index.html">About</a></li>
+      </ul>
+    </div>
+
+    <div id="body">
+
+<h1>Archive</h1>
+
+<ul id="list">
+	<li class="tutorial"><a href="bezier-curves/index.html">Bezi&eacute;r curves and JavaScript;</a> Daniel Pupius, January 2002</li>
+	<li class="article"><a href="coding-for-portability1/index.html">Coding for portability, Part 1;</a> Tom Trenka, March 2002</li>
+	<li class="article"><a href="coding-for-portability2/index.html">Coding for portability, Part 2;</a> Tom Trenka, April 2002</li>
+	<li class="script"><a href="column-script/index.html">Column Script;</a>  Michael van Ouwerkerk, January 2002</li>
+	<li class="tutorial"><a href="dhtml-scrollbars/index.html">DHTML Scrollbars;</a> Daniel Pupius, June 2002</li>
+	<li class="article"><a href="seperating-structure/index.html">Designing for standards: Separating structure, style and behaviour;</a> Daniel Pupius, February 2002</li>
+	<li class="profile"><a href="doubleyou/index.html">DoubleYou Interview;</a> Sergi Meseguer, March 2002</li>
+	<li class="script"><a href="margin-fix/index.html">Internet Explorer Margin Fix;</a> David Schontzler, April 2002</li>
+	<li class="tutorial"><a href="maths-and-dhtml/index.html">Mathematics and DHTML;</a> Daniel Pupius, February 2002</li>
+	<li class="profile"><a href="multi-interview/index.html">Multi-interview;</a> March 2002</li>
+	<li class="tutorial"><a href="rdf/index.html">An Introduction to the Resource Description Framework (RDF);</a> Daniel Pupius, June 2002</li>
+	<li class="script"><a href="rss/index.html">PHP RSS 1.0 Parser;</a> Daniel Pupius, June 2002</li>
+	<li class="profile"><a href="scott-andrew/index.html">Scott Andrew (profile &amp; interview);</a> January 2002</li>
+	<li class="article"><a href="sig-slots/index.html">Advanced JavaScript events with Signals and Slots;</a> Alex Russell, July 2002</li>
+	<li class="tutorial"><a href="viewport/index.html">The Viewport;</a>  Michael van Ouwerkerk, July 2002</li>
+	<li class="article"><a href="who-are-we-designing-for/index.html">Who are we designing for?;</a>  Daniel Pupius, March 2002</li>
+</ul>
+
+<p class="nojustify">Check out Michael's Viewport article in the <a href="interface/index.html">original DHTML interface</a>.</p>
+
+<form action="http://13thparallel.com/archive/" method="get" onsubmit="return false">
+	<fieldset>
+		<input type="checkbox" id="tutorial" value="1" checked="checked" /><label for="tutorial"> Tutorials</label><br />
+		<input type="checkbox" id="script" value="1" checked="checked" /><label for="script"> Scripts</label><br />
+		<input type="checkbox" id="article" value="1" checked="checked" /><label for="article"> Articles</label><br />
+		<input type="checkbox" id="profile" value="1" checked="checked" /><label for="profile"> Profiles and interviews</label>
+	</fieldset>
+</form>
+<script type="text/javascript">
+// <![CDATA[
+	function checkboxes() {
+		var t = document.getElementById("tutorial").checked;
+		var s = document.getElementById("script").checked;
+		var a = document.getElementById("article").checked;
+		var p = document.getElementById("profile").checked;
+
+		var items = document.getElementById("list").getElementsByTagName("li");
+
+		for(var i=0; i<items.length; i++) {
+
+			if(items[i].className=="tutorial") {
+				if(t) items[i].style.visibility = "visible";
+				else  items[i].style.visibility = "hidden";
+			}
+
+			if(items[i].className=="script") {
+				if(s) items[i].style.visibility = "visible";
+				else  items[i].style.visibility = "hidden";
+			}
+
+			if(items[i].className=="article") {
+				if(a) items[i].style.visibility = "visible";
+				else  items[i].style.visibility = "hidden";
+			}
+
+			if(items[i].className=="profile") {
+				if(p) items[i].style.visibility = "visible";
+				else  items[i].style.visibility = "hidden";
+			}
+		}
+	}
+
+
+	Toolkit.Events.addListener(document.getElementById("tutorial"), "onclick", checkboxes);
+	Toolkit.Events.addListener(document.getElementById("script"), "onclick", checkboxes);
+	Toolkit.Events.addListener(document.getElementById("article"), "onclick", checkboxes);
+	Toolkit.Events.addListener(document.getElementById("profile"), "onclick", checkboxes);
+
+// ]]>
+</script>
+
+    </div>
+    <div id="footer" class="copyright">Copyright&copy;2001-2005 Thirteenth Parallel<br />All Rights Reserved</div>
+  </body>
+
+<!-- Mirrored from 13thparallel.com/archive/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:19 GMT -->
+</html>

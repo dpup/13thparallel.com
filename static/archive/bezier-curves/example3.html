@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+<!-- Mirrored from 13thparallel.com/archive/bezier-curves/example3.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:38 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Tutorial - Beziér Curves & Dhtml</title>
+
+<style type="text/css">
+.dot1 { position: absolute; width: 6px; height: 6px; background-image: url('images/red_dot.gif'); font-size: 1px; cursor: hand; }
+.dot2 { position: absolute; width: 6px; height: 6px; background-image: url('images/blue_dot.gif'); font-size: 1px; cursor: hand; }
+.pix  { position: absolute; width: 3px; height: 3px; background-image: url('images/small_dot.gif'); font-size: 1px; }
+
+p     { font-size: 11px; font-family: tahoma,arial,helvetica,sans-serif; color: #000000; }
+
+body         { margin: 0px; padding: 10px; }
+
+</style>
+
+</head>
+
+<body>
+
+<noscript>
+<p>Hi there, if this text is displayed, your browser most likely does not support any JavaScript, which is necessary 
+for viewing this example. Sorry for the inconvenience.</p>
+</noscript>
+
+<p>Drag the blue and red dots to change the curve.  Reload for random curve<br>
+&nbsp; <font color="#FF0000">red</font> = end point, <font color="#0000FF"> blue</font> = control point</p>
+
+<script type="text/javascript" src="js/drag.js"></script>
+<script type="text/javascript" src="js/lib_basic.js"></script>
+<script type="text/javascript" src="js/lib_animation.js"></script>
+
+<div style="position: absolute; top: 60px; left: 50px; width: 300px; height: 300px; border: 1px solid black; background: #eee; clip: rect(0px, 302px, 302px, 0px);"></div>
+
+<div id="divDragger0" style="top: -10px; left: -10px;" class="dot1"></div>
+<div id="divDragger1" style="top: -10px; left: -10px;" class="dot1"></div>
+<div id="divDragger2" style="top: -10px; left: -10px;" class="dot2"></div>
+<div id="divDragger3" style="top: -10px; left: -10px;" class="dot2"></div>
+
+<script language="javascript" type="text/javascript" >
+	var numPixels = 30;
+	var objDragger = new Array();
+	var objPixels = new Array();
+  
+	for(var i=0; i<numPixels; i++) {
+		document.write('<div id="divPix'+i+'" style="top: -10px; left: -10px;" class="pix"></div>');
+	}
+  
+  	function drawBezier() {
+		var C1 = new coord(objDragger[0].x(), objDragger[0].y());
+		var C2 = new coord(objDragger[1].x(), objDragger[1].y());
+		var C3 = new coord(objDragger[2].x(), objDragger[2].y());
+		var C4 = new coord(objDragger[3].x(), objDragger[3].y());
+		
+		for(var i=0; i<numPixels; i++) {				
+			percent = (1/numPixels) * i;
+			var pos = getBezier(percent, C1, C2, C3, C4);
+			objPixels[i].moveTo(pos.x, pos.y);
+		}
+	}
+  
+  
+	function init() {
+		for (var i=0; i<4; i++) {
+			objDragger[i] = new makeDragObject("divDragger" + i, "objDragger" + i, null, 51, 350, 61, 360, null, null, drawBezier);
+		}
+		
+		for(var i=0; i<numPixels; i++) objPixels[i] = new make("divPix" + i);
+	
+		objDragger[0].moveMe(Math.round(Math.random()*250)+50, Math.round(Math.random()*250)+60);
+		objDragger[1].moveMe(Math.round(Math.random()*250)+50, Math.round(Math.random()*250)+60);
+		objDragger[2].moveMe(Math.round(Math.random()*250)+50, Math.round(Math.random()*250)+60);
+		objDragger[3].moveMe(Math.round(Math.random()*250)+50, Math.round(Math.random()*250)+60);		
+		drawBezier();
+		
+		document.onmousedown = mouseDown;
+		document.onmouseup = mouseUp;
+		document.onmousemove = mouseMove;
+	}
+	
+	window.onload = init;
+	
+</script>
+
+</body>
+
+<!-- Mirrored from 13thparallel.com/archive/bezier-curves/example3.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:39 GMT -->
+</html>

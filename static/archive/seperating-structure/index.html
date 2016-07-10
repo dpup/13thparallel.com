@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!--
+  Title:        Thirteenth Parallel (Archive / Temp Site)
+  Description:  Interface for the temporary site put up to hold 13th's old content
+
+  Creator:      Dan Pupius <http://pupius.co.uk>
+  Date:         2005-01-14
+  Rights:       Copyright (c)2002-2005 Daniel Pupius
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<!-- Mirrored from 13thparallel.com/archive/seperating-structure/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Thirteenth Parallel</title>
+    <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+    <meta name="copyright" content="Copyright (c)2002-2005 Thirteenth Parallel, All Rights Reserved" />
+    <link rel="stylesheet" type="text/css" href="../../styles/13.css" />
+    <script type="text/javascript" src="../../js/Toolkit.js"></script>
+    <script type="text/javascript" src="../../js/Toolkit.Events.js"></script>
+    <script type="text/javascript" src="../../js/stuff.js"></script>
+  </head>
+
+  <body>
+    <p id="title"><em>Thirteenth Parallel /archive/seperating-structure/</em></p>
+
+    <div id="menu">
+      <ul>
+        <li><a href="../../blog/index.html">Home</a></li>
+        <li><a href="../index.html" class="active">Archive</a></li>
+        <li><a href="../../about/index.html">About</a></li>
+      </ul>
+    </div>
+
+    <div id="body">
+
+<h1>Designing for standards: Separating structure, style and behaviour</h1>
+<p class="author">By Daniel Pupius, February 2002</p>
+
+<h2>Introduction</h2>
+<p>There has been a lot of talk recently about how web sites should be designed.
+Here at Thirteenth Parallel we believe sites should be accessible to as many
+people as possible. That means, producing sites that convey the information
+contained within them correctly, no matter what browser or device is viewing
+them. Now this doesn&#8217;t mean they have to look the same. For example, with this
+site we have decided only to provide the dynamic content to the latest browsers,
+however the site degrades nicely right down to a text-only client.</p>
+<p>This article discusses how we might produce sites such that they degrade
+gracefully while sticking to the World Wide Web Consortium&#8217;s (W3C)
+recommendations. It is by no means a definitive resolution but rather our
+interpretation of a very long discussion and provides a guide on how to take a
+step in the right direction!</p>
+<p>After all, this is new to all of us.</p>
+
+
+
+<h2>Background</h2>
+<p>Over the last few years the World Wide Web Consortium (W3C) has laid down a
+series of recommendations about how the web should be used. Gradually the
+browser manufacturers are moving towards supporting these as de facto standards.</p>
+<p>This makes our lives as developers a hell-of-a-lot easier! Instead of having
+to code for every possible browser, learning the intricacies of each object
+model and the various ways they handle cascading style sheets (CSS), we can
+produce clean, functional code that works in all browsers that support the W3C
+document object model (DOM).</p>
+<p>This is all very well. However, we still want our sites to show up nicely in
+the older browsers and the multitude of products that can now access the web but
+do not support the W3C DOM (for example phones, TVs, fridges?). We can achieve
+this by layering the technologies the way the pioneers of the web first
+intended.</p>
+<p>The whole idea of the Hypertext Mark-up Language (HTML) was to provide a
+platform for information transfer that was independent of the user&#8217;s computer
+and operating system. It is a tagging language that describes the structure of a
+document. It was also intended that the document's structure was intuitive and consistent; the
+goal being that as well as being human-readable, the code would be
+machine-readable, allowing software to infer what the page is about - this is
+now one of the ambitions for the eXtensible Mark-up Language (XML) as the use of
+HTML has been corrupted over time.</p>
+<p>As technologies are added to &#8220;improve&#8221; the interactivity and
+appearance of the web, they create new layers that wrap around the existing core. If a user-agent, 
+perhaps your telephone or electronic wallet, does not understand a particular 
+level of technology it just ignores it (in theory at least!). Now, advanced 
+documents can be written in such a way that even when one of these layers is 
+removed, the document remains meaningful because the core content is understood 
+by all user agents. </p>
+<p>So, how do we do this?</p>
+
+
+
+<h2>Step 1: write your content</h2>
+<p>In 99% of cases your content is your site! Before you even think about
+layout, style and colour schemes write your content.</p>
+<p>If you write your content in such away that it is understandable before you
+add any style sheets then you are on the right track. Use standard HTML
+elements; use the H1-H6 tags for headings, use lists, and avoid tables for
+anything other than displaying tabular data. There is a reason these tags were
+invented, use them!</p>
+<p>Now you need to test it. It may look ugly, but if the content isn&#8217;t easily
+viewable and easy to navigate then you need to go back.</p>
+<p>The reasons for doing this are not just to be &#8220;hard core&#8221;. If you
+define a logical structure for your documents they will be easier to understand.
+This is especially important if you work as part of a company. If your pages are
+a mass of HTML tags with no noticeable structure it will be a nightmare for
+other developers to come along and figure out how to update the site. I have
+recently experienced this with pages that have been hacked (god I hate using
+that word these days) together in DreamWeaver without any attention paid to the
+source - I&#8217;m not saying it is bad to use &#8220;what you see is what you
+get&#8221; (WYSIWYG) editors. Just make sure you clean up the code afterwards.</p>
+<p>Another important advantage will become clear when you get bored with your
+current design. It is most likely your content will remain pretty much
+untouched; all you want to do is change the layout, insert some flashy pictures
+and add a new colour scheme. If you have defined your structure well there will
+be limited changes to the document saving you a lot of time and effort, which
+you can then put to good use making the site look nice.</p>
+
+
+
+<h2>Step 2: implement the w3c recommendations</h2>
+<p>Now you may have already done this in step 1 as a matter of course. If you
+haven&#8217;t then we&#8217;re going to make the page valid XHTML.</p>
+<p>XHTML extends HTML 4, modularising it and making it valid XML. If you want to
+learn more about implementing XHTML check out the recommendations at: <a href="http://www.w3.org/TR/xhtml1/" class="external">http://www.w3.org/TR/xhtml1/</a>.
+However, I will briefly discuss some major points.</p>
+<p>- Your page must validate against one of three document type definitions (DTD)
+which should be specified in a DOCTYPE declaration prior to the root element. The three different versions are strict, transitional and frameset:</p>
+<pre>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</pre>
+<pre>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;&gt;</pre>
+<pre>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</pre>
+<pre>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot;
+&quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;</pre>
+<pre>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;</pre>
+
+<p>- The root element of the document must be &lt;html&gt; and have an XHTML
+namespace, e.g.</p>
+<pre>&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;<br />xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;</pre>
+<p>- You must ensure the tags are well formed, lowercase and nested properly
+(all tags must be closed, e.g. &lt;p&gt;&lt;/p&gt;, &lt;br /&gt;, &lt;img /&gt;</p>
+<p>- There are many others, for which I advise checking the W3C recommendations</p>
+<p>Again this is not just to be &#8220;hard core&#8221; but has an important role
+in the design. If your HTML is well formed and validates to a particularW3C DTD
+your page will more than likely render correctly in the major browsers. It also
+makes the code easier to parse and manipulate using code, this is important if
+you decide to add dynamic components to your site.</p>
+
+
+
+<h2>Step 3: define the appearance, a.k.a. Style</h2>
+<p>If we are going to add some dynamic behaviour later on we need to create two
+style-sheets. Firstly we need a &#8220;basic&#8221; style-sheet for general layout and styling. 
+Then if we would decide to add a script that needs specific styling we can add a &#8220;complex&#8221; 
+style-sheet that prepares the html elements that will be used by the script.</p>
+<p> We include them as follows:</p>
+<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;<br />href=&quot;style/basic.css&quot;&gt;
+&lt;script type=&quot;text/javascript&quot;<br />src=&quot;behaviour.js&quot;&gt;&lt;/script&gt;</pre>
+<p>Then in the JavaScript file, along with all our other code, we can place:</p>
+
+<pre>if (document.createElement
+&amp;&amp; document.getElementsByTagName) {
+ var link = document.createElement('link');
+ link.rel = "stylesheet";
+ link.type = "text/css";
+ link.href = "style/complex.css";
+ var head =
+ document.getElementsByTagName('head')[0];	
+ head.appendChild(link);
+}</pre>
+
+<p>Getting your structure to appear how you want it is the tricky part. You need
+to manipulate the tags that you have already, using CSS. It may be a good idea
+to group structural elements inside layers, but this is something that you need
+to figure out for yourself. I have listed some excellent CSS resources at the
+end of this document.</p>
+<p>It is also worth noting that by laying out your HTML in a structured form it
+no way limits the capabilities of your design. You may have to figure out some
+tricks to achieve what you want but it is possible. I have also listed some
+sites that are good examples of what I&#8217;m talking about.</p>
+
+
+
+<h2>Step 4: apply some behaviour</h2>
+<p>In my view this is the fun bit. This is where you make the HTML ... Dynamic.</p>
+<p>Like CSS this is something you really have to learn for yourself (again I&#8217;ve
+listed some good resources at the end) but I&#8217;ll list a few pointers.</p>
+<p>Firstly, keep all your code outside your document. This is really for
+neatness, but also helps you keep behaviour logically separate from structure
+and style.</p>
+<p>It is necessary to block out browsers that aren&#8217;t compatible with your code.
+In the Thirteenth Parallel site we have a function that initiates all the
+dynamic behaviour, at the top we have the following code:<br />
+(note that long lines of code have been wrapped to fit our layout. 
+where that happens, these line wraps are marked &#187;&#187;)
+</p>
+<pre>if (!document.getElementById
+|| !document.getElementsByTagName
+|| typeof document.getElementsByTagName &#187;&#187;
+(&quot;head&quot;)[0].innerHTML == &quot;undefined&quot;) {
+  return;
+}</pre>
+<p>This checks for features that the site requires in order to run properly, if
+they are not present then the script doesn&#8217;t run. Instead of checking for a
+particular browser we are checking for objects. Theoretically this means our
+code will work on any browser that supports those objects now or in the future.</p>
+<p>I should quickly note, before several of you send me emails, that innerHTML
+is a proprietary function invented by Microsoft and available in Mozilla. While
+it is not specified in the W3C DOM we are using it in our site to make our life
+easier. In some people&#8217;s eyes this is a Very Bad Thing, the ultimate evil.
+However, we&#8217;ve weighed up the factors involved and found in favour of using it
+(for the time being at least).</p>
+<p>Be careful in the way you reference structural elements in your page. Use
+class names wherever possible. You can then loop through all the elements in a
+page using the function getElementsByTagName(). The following example adds a
+mouseover event to all table cells that have a certain class:</p>
+<pre>var td=document.getElementsByTagName(&quot;td&quot;);
+for (var i=0; i&lt;td.length; i++) {
+  var el = td[i];
+  if (el.className == &quot;specialcell&quot;) {
+    el.onmouseover = function() {
+      this.className = &quot;specialcellOver&quot;;
+    }
+    el.onmouseout = function() {
+      this.className = &quot;specialcell&quot;;
+    }
+  }
+}</pre>
+
+<p>If you want a link to perform some code, give an alternative. For example, if
+I wanted a window to popup when I clicked a link I could do the following:</p>
+
+<pre>&lt;a href=&quot;javascript:doPopup('somepage.htm');&quot;&gt;
+Open some page&lt;/a&gt;</pre>
+
+<p>What would happen if a browser that didn&#8217;t have JavaScript enabled tried to
+follow this link? It&#8217;d fall over. The following code is much better:</p>
+
+<pre>&lt;a href=&quot;somepage.htm&quot; 
+onclick=&quot;return doPopup('somepage.htm');&quot;&gt;
+Open some page&lt;/a&gt;</pre>
+
+<p>In this case the browser can still follow the link to the next page, and if doPopup returns false it will cancel the link.</p>
+
+
+
+<h2>Step 5: test your site for accessibility</h2>
+<p>It is important to test your site on a wide range of platforms, browsers and
+operating systems. If you&#8217;ve designed your site properly you will only have a
+few tweaks to make. Here are a couple of unusual browsers that you might like to
+check out:<br />
+<a href="http://jim.spath.com/lynx_win32/" class="external">Lynx</a> - text only browser<br />
+<a href="http://developer.msntv.com/Tools/WebTVVwr.asp" class="external">WebTV</a> - emulator of
+the TV based internet browser</p>
+
+
+
+<h2>Conclusion</h2>
+<p>As you can see this isn&#8217;t rocket science and I hope you can see the
+advantages for developing in this way. As I said at the start it is not a
+definitive guide but rather a guide to a step in the right direction.</p>
+<p>It should also be noted that in the industry it is still quite common to see
+specifications that require Netscape 4 compatibility. It is very hard to explain
+to a client why the extra interactivity they have paid thousands of pounds for
+works in one browser but not another. However, if you follow this process you
+could &#8220;bolt on&#8221; distinct layers of style and behaviour that are only
+present for browsers that support document.layers.</p>
+
+
+
+
+<h2>Resources</h2>
+<p><strong>Important W3C pages</strong><br />
+<a href="http://www.w3.org/TR/xhtml1/" class="external">XHTML 1 specification</a>
+<br />
+<a href="http://validator.w3.org/" class="external">XHTML Validator</a><br />
+<a href="http://www.w3.org/TR/REC-CSS2/" class="external">CSS2 specification</a><br />
+<a href="http://jigsaw.w3.org/css-validator/" class="external">CSS validator</a>
+</p>
+
+<p><strong>CSS</strong><br />
+<a href="http://www.richinstyle.com/" class="external">Rich in style</a><br />
+<a href="http://www.devguru.com/Technologies/css/quickref/css_intro.html" class="external">DevGuru CSS2 Reference</a><br />
+<a href="http://www.nypl.org/styleguide/" class="external">NYPL Style Guide</a><br />
+<a href="http://www.bluerobot.com/" class="external">Blue Robot</a><br />
+<a href="http://www.neuralust.com/~cac6982/" class="external">cac6982</a> (a new style and layout throughout February)
+</p>
+
+<p><strong>DHTML/JS</strong><br />
+<a href="http://www.devguru.com/Technologies/ecmascript/quickref/javascript_index.html" class="external">DevGuru
+JavaScript reference</a>
+<br />
+<a href="http://www.dhtmlcentral.com/" class="external">DhtmlCentral</a><br />
+<a href="http://webfx.eae.net/" class="external">WebFX</a>
+</p>
+
+<p><strong>Other Resources</strong><br />
+<a href="http://www.cs.tut.fi/~jkorpela/latin1/3.html" class="external">Detailed description of
+character codes</a><br />
+<a href="http://www.thenoodleincident.com/tutorials/design_rant/" class="external">Owen Briggs&#8217; Design Rant</a> (what started me (us) thinking about this)<br />
+<br />
+(note from Micha&euml;l: Actually, Owen&#8217;s article is awesome but a long time before it became famous, 
+I asked Aaron something like this: &#8216;What of dynamic xhtml, what do I need to know to start using it?&#8217; 
+and he gave me a surprising reply in <a href="http://dhtmlcentral.com/forums/topic.asp?whichpage=2&amp;Forum_Title=General+DHTML+issues&amp;Topic_Title=Using+Toms+API+with+Gecko+And+DTD+%3F&amp;CAT_ID=1&amp;FORUM_ID=6&amp;TOPIC_ID=2761" class="external">this thread</a> on DHTMLCentral. 
+This is what got me thinking in earnest about these principles, and some weeks later I applied them in skriptlab v3.)
+</p>
+
+    </div>
+    <div id="footer" class="copyright">Copyright&copy;2001-2005 Thirteenth Parallel<br />All Rights Reserved</div>
+  </body>
+
+<!-- Mirrored from 13thparallel.com/archive/seperating-structure/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:22 GMT -->
+</html>

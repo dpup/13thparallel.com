@@ -1,0 +1,4 @@
+<div class="item">
+  &laquo; <strong><a href="<?13r2a itemLink ?>"><?13r2a itemTitle ?></a></strong> &raquo;<br />
+  <?13r2a itemDescription ?>
+</div>

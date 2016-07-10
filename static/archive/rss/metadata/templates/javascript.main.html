@@ -1,0 +1,43 @@
+//================================================================================
+//  13r2a.php - 13th RSS1.0 2 Anything - vs1.0
+//  copyright(c)2002 Daniel Pupius (13thparallel.org)
+//
+//  PHP script:     <?13r2a pageURL ?>
+//  XML source:     <?13r2a xmlFile ?>
+//  main template:  <?13r2a mainTemplate ?>
+//  item template:  <?13r2a itemTemplate ?>
+//================================================================================
+
+var newsFeed = {
+	title: 		"<?13r2a feedTitle ?>",
+	link: 		"<?13r2a feedLink ?>",
+	description:	"<?13r2a feedDescription ?>",
+	imageLink:	"<?13r2a imageLink ?>",
+	imageURL:	"<?13r2a imageURL ?>",
+	imageTitle:	"<?13r2a imageTitle ?>",
+
+	items:		new Array(
+				  <?13r2a theFeed ?>null
+			)
+};
+
+
+// Now, the code below here is used to output the above data into HTML.  I have
+// chosen to use document.write(), in this example, so that the feed will work
+// with older browsers.  There are more imaginative ways that you could display
+// the feed, and if you use "numItems" and "itemNo" variables you could do some
+// pretty cool, dynamic things!  Let us know if you do!!
+
+document.writeln('<a href="%27%20%2b%20newsFeed.html"><img border="0" src="%27%20%2b%20newsFeed-2.html" title="' + newsFeed.imageTitle + '" align="right"></a>');
+document.writeln('<h1><a href="%27%20%2b%20newsFeed-3.html">' + newsFeed.title + '</a></h1>');
+document.writeln('<h2>' + newsFeed.description + '</h2>');
+document.writeln('<hr />');
+
+//miss out last item, as it is the null value
+for(var i=0; i<newsFeed.items.length-1; i++) {
+	var item = newsFeed.items[i];
+	document.writeln('<p><strong>' + item.title + '</strong><br />');
+	document.writeln(item.description + '<br />');
+	document.writeln('<a href="%27%20%2b%20item.html">go &raquo;</a></p>');
+}
+

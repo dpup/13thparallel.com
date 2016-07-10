@@ -1,0 +1,35 @@
+<html>
+	
+<!-- Mirrored from 13thparallel.com/archive/sig-slots/test2.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:45 GMT -->
+<head>
+		<title>sigslot test #1</title>
+		<script type="text/javascript" language="JavaScript" src="sigslot_core.js"></script>
+		<script type="text/javascript" language="JavaScript" src="split_pane.js"></script>
+		<script type="text/javascript" language="JavaScript">
+			function init(){
+				var container = document.getElementById("panediv");
+				var sp_one = pane_generator(500, 500);
+				container.appendChild(sp_one.domNode);
+
+				var sp_two = pane_generator(250, 500, true);
+				sp_one.pane2obj.domNode.appendChild(sp_two.domNode);
+				//__sig__.connect(sp_one, sp_one.resizePane2, sp_two, sp_two.resizeContainer);
+				__sig__.connect(sp_one.pane2obj, sp_one.pane2obj.resize, sp_two, sp_two.resizeContainer);
+
+				/*
+				var ifrm = document.createElement("iframe");
+				ifrm.setAttribute("src", "http://www.theregus.com");
+				ifrm.style.width = "100%";
+				ifrm.style.height = "100%";
+				sp_one.pane1obj.domNode.appendChild(ifrm);
+				*/
+			}
+		</script>
+	</head>
+	<body onload="init();">
+		<div style="left: 100px; top: 100px; position: absolute;" id="panediv">
+		</div>
+	</body>
+
+<!-- Mirrored from 13thparallel.com/archive/sig-slots/test2.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Jul 2016 21:58:45 GMT -->
+</html>
